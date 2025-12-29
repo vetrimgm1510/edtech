@@ -1432,8 +1432,8 @@ body {
 }
 
 .logo {
-  width: 62px;
-  height: 62px;
+  width: 162px;
+  height: 65px;
   border-radius: 50%;
   /* background: linear-gradient(135deg, #7c3aed, #a855f7); */
   display: flex;
