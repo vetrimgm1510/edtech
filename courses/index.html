@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NxtSync – Programs</title>
+
+<style>
+/* ================= BASE ================= */
+:root{
+  --bg:#070b1a;
+  --card:rgba(255,255,255,0.08);
+  --glass:rgba(255,255,255,0.12);
+  --accent:#ffd166;
+  --accent2:#fb8b24;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  /* background:#0b0b14; */
+  background:
+    radial-gradient(circle at top right,#111a40,transparent 40%),
+    radial-gradient(circle at bottom left,#1b2a6b,transparent 45%),
+    var(--bg);
+  color:#ffffff;
+  /* color:orange; */
+}
+
+.section{
+  padding:60px 20px;
+  max-width:1400px;
+  margin:auto;
+  background: transparent;
+}
+.section-title{
+  margin-top: 5rem;
+  text-align:center;
+  font-size:2.6rem;
+  font-weight:800;
+}
+.section-tagline{
+  text-align:center;
+  color:white;
+  font-style:italic;
+  margin-bottom:30px;
+}
+
+/* ================= SEARCH ================= */
+.search-box{
+  max-width:420px;
+  margin:0 auto 50px;
+  
+}
+.search-box input{
+  width:100%;
+  padding:14px 20px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  color: white;
+  font-size:15px;
+  background-color: rgba(255, 255, 255, 0.197);
+  
+}
+
+/* ================= PROGRAM CONTAINER ================= */
+.program-container{
+  display:flex;
+  gap:50px;
+  padding:50px;
+  margin-bottom:60px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#fff,#f8f7ff);
+   /* background:
+    radial-gradient(circle at top right, rgba(251,139,36,0.15), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(99,102,241,0.18), transparent 45%),
+    var(--bg); */
+  box-shadow:0 30px 80px rgba(124,58,237,.18);
+  width:80%;
+  margin-left: 10%;
+  color:#111;
+  animation:fadeUp .7s ease;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.left-section{flex:1}
+.right-section{
+  flex:1;
+  position:relative;
+  height:420px;
+}
+
+/* ================= HEADER ================= */
+.header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:18px;
+}
+.logos{
+  width:62px;height:62px;
+  border-radius:50%;
+  background:linear-gradient(135deg,orange,#a855f7);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;color:#fff;
+  box-shadow:0 12px 30px rgba(124,58,237,.4);
+}
+.header h1{
+  font-size:30px;
+  font-weight:800;
+}
+
+/* ================= BADGE ================= */
+.trending-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,orange,red);
+  color:#fff;
+  padding:8px 22px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:22px;
+}
+
+/* ================= DESCRIPTION ================= */
+.description{
+  font-size:16px;
+  line-height:1.7;
+  color:#374151;
+  margin-bottom:28px;
+}
+
+/* ================= STATS ================= */
+.stats{
+  display:flex;
+  gap:16px;
+  margin-bottom:30px;
+}
+.stat-item{
+  background:#fff;
+  padding:14px 18px;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:600;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+/* ================= CERTS ================= */
+.certification-title{
+  font-size:14px;
+  font-weight:600;
+  color:#6b7280;
+  margin-bottom:14px;
+}
+.certification-logos{
+  display:flex;
+  gap:16px;
+  margin-bottom:32px;
+}
+.cert-box{
+  padding:20px 34px;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  text-align:center;
+}
+.iso-logo{font-size:30px;font-weight:800;color:orange}
+.aicte-logo{font-size:30px;font-weight:800;color:#16a34a}
+
+/* ================= BUTTONS ================= */
+.buttons{display:flex;gap:18px}
+.btn{
+  padding:14px 34px;
+  border-radius:14px;
+  font-size:14px;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+}
+.btn-outline{
+  border:2px solid orange;
+  background:transparent;
+  color:#7c3aed;
+  text-decoration:none;
+}
+.btn-outline:hover{background:orange;color:#fff}
+.btn-solid{
+  background:linear-gradient(135deg,orange,#a855f7);
+  color:#fff;
+  box-shadow:0 12px 30px rgba(124,58,237,.4);
+}
+
+/* ================= RIGHT ================= */
+.person-image{
+  width:100%;
+  height:100%;
+  border-radius:28px;
+  /* background:linear-gradient(135deg,#7c3aed,#a855f7); */
+   background:linear-gradient(135deg,#fff,#f8f7ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:50px;
+  color:white;
+}
+.stats-card{
+  position:absolute;
+  background:#fff;
+  padding:30px;
+  border-radius:25px;
+  font-size:12px;
+  background: linear-gradient(105deg,orange,#a855f7);
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-14px)}
+  100%{transform:translateY(0)}
+}
+.stats-card-1{top:30px;left:-20px}
+.stats-card-2{bottom:40px;left:-20px}
+.stats-card-3{top:20px;right:-20px}
+.stats-card-4{bottom:70px;right:-20px}
+
+/* ================= PROGRESS BAR ================= */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, orange, #55f7ae);
+  width: 80%; /* Progress percentage */
+  border-radius: 4px;
+}
+
+/* ================= MODAL ================= */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+.modal-content{
+  background:#fff;
+  color:#000;
+  padding:30px;
+  border-radius:16px;
+  width:90%;
+  max-width:420px;
+}
+.modal-content h2{margin-top:0}
+.modal-content input,select{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+}
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+.person-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  /* background:linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.1)); */
+  border-radius:28px;
+}
+.person-image{
+  position:relative;
+  overflow:hidden;
+}
+
+/* actual image layer */
+.slide-image{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  animation:imageSlide 6s ease-in-out infinite;
+}
+
+/* smooth slide animation */
+@keyframes imageSlide{
+  0%   { transform:translateX(0); }
+  50%  { transform:translateX(-20px); }
+  100% { transform:translateX(0); }
+}
+
+
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .program-container{flex-direction:column}
+  .right-section{width:100%}
+}
+/* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 90%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+     background-color: #010e3a;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      font-size: 1.05rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Get Started Button in Navbar */
+    .btn-login {
+      background: rgb(44, 214, 44);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(129, 133, 130, 0.4);
+    }
+
+    /* Dropdown wrapper */
+    .nav-links .dropdown {
+      position: relative;
+    }
+
+    /* Dropdown menu (hidden by default) */
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #faf9f9;
+      padding: 10px 0;
+      min-width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    /* Show on hover */
+    .nav-links .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Dropdown items */
+    .nav-links .dropdown-menu li {
+      list-style: none;
+    }
+
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #121212;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links .dropdown-menu a:hover {
+      background: #9eedc9;
+    }
+
+    /* Align Courses + caret inline */
+    .dropdown-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-header a {
+      text-decoration: none;
+      color: whitesmoke;
+      font-weight: 500;
+    }
+
+    /* Caret beside text */
+    .dropdown-toggle {
+      font-size: 14px;
+      cursor: pointer;
+      color: whitesmoke;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Hamburger button styling */
+    .nav-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      padding: 0;
+      box-sizing: border-box;
+      display: none;
+    }
+
+    .nav-toggle:focus {
+      outline: none;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: whitesmoke;
+      border-radius: 3px;
+      transition: all 0.3s linear;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      position: absolute;
+    }
+
+    .hamburger::before {
+      top: -10px;
+    }
+
+    .hamburger::after {
+      top: 10px;
+    }
+
+    .nav-toggle.open .hamburger {
+      background-color: transparent;
+    }
+
+    .nav-toggle.open .hamburger::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .nav-toggle.open .hamburger::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* Hide nav links by default on mobile */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 90%;
+        background:black;
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+      }
+
+      .nav-links a:hover {
+        background: var(--accent-hover);
+        color: white;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* Show nav-links normally on desktops */
+    @media (min-width: 901px) {
+      .nav-toggle {
+        display: none;
+      }
+      .nav-links {
+        display: flex !important;
+        position: static;
+        background: none;
+        box-shadow: none;
+        width: auto;
+      }
+    }
+
+    .nav-get-started {
+      margin: 1rem 20px;
+    }
+
+    .nav-get-started .btn-login {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (min-width: 901px) {
+      .nav-get-started {
+        margin: 0;
+      }
+      .nav-get-started .btn-login {
+        width: auto;
+        padding: 10px 20px;
+      }
+    }
+    .footer {
+  width: 90%;
+  margin: auto;
+background-color: #010e3a;
+  color: orange;
+  padding: 60px 30px;
+   border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand-logo img {
+  height: 50px;
+}
+
+.brand-description {
+  color: rgba(250, 247, 247, 0.7);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: orange;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: rgba(253, 250, 250, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.contact-item {
+  color: rgba(246, 244, 244, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* Responsive styling for tablets and mobiles */
+@media (max-width: 900px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .brand-description {
+    font-size: 13px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 13px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+
+  .brand-description {
+    font-size: 12px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 12px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+.footer-bottom {
+  padding: 14px 10px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto 0;
+
+  background-color: #010e3a;
+
+  border-radius: 50px;
+}
+
+.footer-bottom div {
+  margin: 6px 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+/* Tagline text */
+.tagline {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+  .program-container{
+    height: 100vh;
+  }
+  .footer-bottom {
+    width: 95%;
+    padding: 12px 15px;
+    border-radius: 30px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+  .program-container{
+    height: 100vh;
+  }
+  .footer-bottom {
+    width: 100%;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+}
+
+/* ================= MOBILE & TABLET RESPONSIVE ================= */
+
+/* Tablets & below */
+@media (max-width: 900px) {
+.program-container{
+    height: 100vh;
+  }
+  .program-container {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 28px;
+    gap: 30px;
+    flex-direction: column; /* stack */
+  }
+
+  /* LEFT CONTENT ON TOP */
+  .left-section {
+    order: 1;
+  }
+
+  /* IMAGE + STATS BELOW */
+  .right-section {
+    order: 2;
+    width: 100%;
+    height: 320px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-item {
+    flex: 1 1 calc(50% - 10px);
+    text-align: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 600px) {
+  .program-container{
+    height: 100vh;
+  }
+
+  .program-container {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .logos {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .trending-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .right-section {
+    height: 260px;
+  }
+
+  /* FLOATING STATS — SCALE DOWN BUT KEEP ANIMATION */
+  .stats-card {
+    padding: 14px;
+    font-size: 10px;
+  }
+
+  .stats-card-1 { top: 10px; left: 10px; }
+  .stats-card-2 { bottom: 10px; left: 10px; }
+  .stats-card-3 { top: 10px; right: 10px; }
+  .stats-card-4 { bottom: 10px; right: 10px; }
+}
+
+/* ================= VERY SMALL DEVICES ================= */
+@media (max-width: 420px) {
+ .program-container{
+    height: 500vh;
+  }
+    .right-section {
+    position: relative;
+    width: 100%;
+    height: 260px; /* REQUIRED */
+    margin-top: 20px;
+  }
+
+  .person-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .slide-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    animation: none;
+  }
+}
+/* ================= MOBILE IMAGE FIX ================= */
+@media (max-width: 900px) {
+  .program-container{
+    height: 100vh;
+  }
+  .right-section {
+    position: relative;
+    width: 100%;
+    height: 260px; /* REQUIRED */
+    margin-top: 20px;
+  }
+
+  .person-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .slide-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    animation: none;
+  }
+}
+@media (max-width: 380px) {
+  .program-container{
+    height: 100vh;
+  }
+    .right-section {
+    position: relative;
+    width: 100%;
+    height: 260px; /* REQUIRED */
+    margin-top: 20px;
+  }
+
+  .person-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .slide-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    animation: none;
+  }
+  .program-container{
+    height: 100vh;
+  }
+
+  .program-container {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .logos {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .trending-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .right-section {
+    height: 260px;
+  }
+
+  /* FLOATING STATS — SCALE DOWN BUT KEEP ANIMATION */
+  .stats-card {
+    padding: 14px;
+    font-size: 10px;
+  }
+
+  .stats-card-1 { top: 10px; left: 10px; }
+  .stats-card-2 { bottom: 10px; left: 10px; }
+  .stats-card-3 { top: 10px; right: 10px; }
+  .stats-card-4 { bottom: 10px; right: 10px; }
+
+
+    }
+
+  
+
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../logo.png" alt="NxtSync Logo">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <div class="dropdown-header">
+            <a href="../courses/">Programs</a>
+            <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="../courses/more/webdev.html">Web Development</a></li>
+            <li><a href="../courses/more/AI.html">AI & ML</a></li>
+            <li><a href="../courses/more/cc.html">Cloud Computing</a></li>
+            <li><a href="../courses/more/uiux.html">UI/UX Design</a></li>
+            <li><a href="../courses/">View More</a></li>
+          </ul>
+        </li>
+        <li><a href="../about/">About Us</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
+        <li><a href="../refer.html">Refer & Earn</a></li>
+        <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
+        <li class="nav-login">
+          <a href="javascript:void(0)" class="btn-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="section">
+  <h2 class="section-title">OUR PROGRAMS</h2>
+  <p class="section-tagline">Career-focused programs with certifications & placement support</p>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search course...">
+  </div>
+
+  <div id="programs"></div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2>Enroll Now</h2>
+    <input type="text" id="courseName" readonly>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email">
+    <input type="tel" placeholder="Phone">
+    <button class="btn btn-solid" style="width:100%">Submit</button>
+  </div>
+</div>
+<!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-section">
+          <div class="brand-logo"><img src="../logo.png" alt="NxtSync Logo"></div>
+          <p class="brand-description">Empowering the next generation with cutting-edge courses and exclusive internship opportunities. Building careers, one student at a time.</p>
+<div style="display:flex; flex-direction:column; gap:0.8rem; align-items:flex-start;">      
+      <a href="/pdf/privacypolicy.pdf" target="_blank" style="color:#fcfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Privacy Policy</a>
+      <a href="/pdf/Termsandconditions.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Terms & Conditions</a>
+      <a href="/pdf/termsandconditions-interns.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Internship Terms & Conditions</a>
+    </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info"><div class="contact-item"><a href="https://maps.app.goo.gl/wj1dTCTgNmoQgTGu9" style="text-decoration: none; color: white;" >📍 1st floor, Divya diamonds building, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033</a></div><div class="contact-item"><a href="tel:+916302655033"  style="text-decoration: none; color: white;">+916302655033</a></div><div class="contact-item"><a href="mailto:support@nxtsync.in" style="color: white; text-decoration: none;">✉️ support@nxtsync.in</a></div></div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+  <a href="https://www.instagram.com/nxt_sync" class="social-link" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com/company/nxtsync" class="social-link" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+</div>
+      </div>
+     
+    </div>
+  </footer>
+  <div class="footer-bottom">
+  <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
+  <div class="tagline">Building Tomorrow's Leaders Today</div>
+</div>
+
+<script>
+const programs = [
+
+  { title:"Full Stack Web Development", icon:"💻", badge:"🔥 Trending", desc:"HTML, CSS, JS, React, Node, MongoDB & cloud deployment.", duration:"6 Months", students:"2500+", rating:"4.9/5", brochure:"brochures/FULL STACK WEB DEVELOPMENT.pdf",image:"images/fullstack.jpg" },
+
+  { title:"Java Full Stack", icon:"☕", badge:"🔥 Trending", desc:"Java, Spring Boot, REST APIs, frontend & backend.", duration:"6 Months", students:"2200+", rating:"4.8/5", brochure:"brochures/JAVA FULL STACK SYLLABUS COPY.pdf",image:"images/javafullstack.jpg" },
+
+  { title:"Java Programming", icon:"☕", badge:"⭐ Popular", desc:"Core Java, OOP, collections & multithreading.", duration:"3 Months", students:"1900+", rating:"4.7/5", brochure:"brochures/JAVA-1.pdf",image:"images/java.webp" },
+
+  { title:"Python Programming", icon:"🐍", badge:"🔥 Trending", desc:"Python basics, OOP, scripting & automation.", duration:"3 Months", students:"2400+", rating:"4.8/5", brochure:"brochures/PYTHON.pdf",image:"images/python.jpg" },
+
+  { title:"Artificial Intelligence", icon:"🧠", badge:"🔥 Trending", desc:"AI fundamentals, NLP, CV, ethics & projects.", duration:"6 Months", students:"2000+", rating:"4.8/5", brochure:"brochures/Ai Syllabus copy-1.pdf",image:"images/ai.avif" },
+
+  { title:"Machine Learning", icon:"🤖", badge:"🔥 Trending", desc:"ML algorithms, deep learning & real projects.", duration:"6 Months", students:"2100+", rating:"4.8/5", brochure:"brochures/ML SYLLABUS COPY.pdf",image:"images/ml.jpg" },
+
+  { title:"Data Science", icon:"📊", badge:"🔥 Trending", desc:"Python, ML, statistics & big data analytics.", duration:"6 Months", students:"1800+", rating:"4.8/5", brochure:"brochures/DATA SCIENCE-1.pdf",image:"images/ds.jpg" },
+
+  { title:"Data Analytics", icon:"📈", badge:"🔥 Trending", desc:"Excel, SQL, Power BI, Tableau & analytics.", duration:"5 Months", students:"1700+", rating:"4.7/5", brochure:"brochures/DATA ANALYTICS.pdf",image:"images/da.jpeg" },
+
+  { title:"Business Analytics", icon:"📉", badge:"⭐ Popular", desc:"Business insights using data & visualization.", duration:"5 Months", students:"1500+", rating:"4.7/5", brochure:"brochures/BUSINESS ANALYTICS.pdf",image:"images/ba.jpg" },
+
+  { title:"Cyber Security", icon:"🛡️", badge:"🔥 Trending", desc:"Ethical hacking, network & cloud security.", duration:"6 Months", students:"1600+", rating:"4.8/5", brochure:"brochures/CYBER SECURITY SYLLABUS COPY.pdf",image:"images/cyber.jpg" },
+
+  { title:"AWS Cloud Computing", icon:"☁️", badge:"🔥 Trending", desc:"EC2, S3, Lambda, DevOps & cloud security.", duration:"4 Months", students:"1800+", rating:"4.8/5", brochure:"brochures/AWS SYLLABUS COPY.pdf",image:"images/aws.webp" },
+
+  { title:"DevOps", icon:"⚙️", badge:"🔥 Trending", desc:"CI/CD, Docker, Kubernetes & automation.", duration:"4 Months", students:"1600+", rating:"4.7/5", brochure:"brochures/DEVOPS.pdf",image:"images/devops.webp" },
+
+  { title:"SQL", icon:"🗄️", badge:"⭐ Popular", desc:"Queries, joins, subqueries & databases.", duration:"2 Months", students:"2000+", rating:"4.6/5", brochure:"brochures/SQL.pdf",image:"images/sql.jpg" },
+
+  { title:"Linux", icon:"🐧", badge:"⭐ Popular", desc:"Linux admin, shell scripting & networking.", duration:"3 Months", students:"1700+", rating:"4.7/5", brochure:"brochures/LINUX SYLLABUS COPY.pdf",image:"images/linux.webp" },
+
+  { title:"C Programming", icon:"💡", badge:"⭐ Popular", desc:"Logic building, pointers & memory.", duration:"2 Months", students:"1800+", rating:"4.6/5", brochure:"brochures/C LANGUAGE.pdf",image:"images/c.png" },
+
+  { title:"Embedded Systems", icon:"🔌", badge:"⭐ Popular", desc:"Microcontrollers, ARM, RTOS & sensors.", duration:"5 Months", students:"1200+", rating:"4.6/5", brochure:"brochures/EMBEDDED SYSTEMS (1).pdf",image:"images/es.webp" },
+
+  { title:"IoT & Robotics", icon:"🤖", badge:"🔥 Trending", desc:"IoT architecture, Arduino & robotics.", duration:"6 Months", students:"1400+", rating:"4.8/5", brochure:"brochures/IOT & Robotics-1.pdf",image:"images/iot.webp" },
+
+  { title:"VLSI Design", icon:"🧩", badge:"⭐ Popular", desc:"ASIC, FPGA, Verilog & chip design.", duration:"6 Months", students:"900+", rating:"4.6/5", brochure:"brochures/VLSI-1.pdf",image:"images/vlsi.jpg" },
+
+  { title:"SolidWorks", icon:"🛠️", badge:"⭐ Popular", desc:"3D modeling & mechanical design.", duration:"3 Months", students:"1000+", rating:"4.6/5", brochure:"brochures/Solid Works Syllabus copies.pdf",image:"images/solidworks.jpg" },
+
+  { title:"AutoCAD", icon:"📐", badge:"⭐ Popular", desc:"2D drafting & 3D modeling.", duration:"3 Months", students:"1500+", rating:"4.6/5", brochure:"brochures/AUTOCAD.pdf",image:"images/autocad.webp" },
+
+  { title:"CATIA", icon:"🧱", badge:"⭐ Popular", desc:"Advanced CAD modeling & design.", duration:"3 Months", students:"900+", rating:"4.5/5", brochure:"brochures/CATIA.pdf",image:"images/catia.jpg" },
+
+  { title:"Revit", icon:"🏗️", badge:"⭐ Popular", desc:"BIM modeling for construction.", duration:"3 Months", students:"850+", rating:"4.5/5", brochure:"brochures/REVIT.pdf",image:"images/revit.webp" },
+
+  { title:"Construction Planning & Management", icon:"🏗️", badge:"⭐ Popular", desc:"Planning, scheduling & execution.", duration:"5 Months", students:"950+", rating:"4.6/5", brochure:"brochures/CONSTRUCTION PLANNING MANAGEMENT (1).pdf",image:"images/construction.webp" },
+
+  { title:"Human Resources", icon:"👥", badge:"⭐ Popular", desc:"Recruitment, payroll & labor laws.", duration:"4 Months", students:"1200+", rating:"4.7/5", brochure:"brochures/HR.pdf",image:"images/hr.webp" },
+
+  { title:"Digital Marketing", icon:"📢", badge:"🔥 Trending", desc:"SEO, SEM, ads & analytics.", duration:"4 Months", students:"1800+", rating:"4.8/5", brochure:"brochures/DIGITAL MARKETING.pdf",image:"images/dm.jpg" },
+
+  { title:"Marketing", icon:"📣", badge:"⭐ Popular", desc:"Branding, campaigns & consumer behavior.", duration:"4 Months", students:"1300+", rating:"4.7/5", brochure:"brochures/MARKETING.pdf",image:"images/marketing.jpg" },
+
+  { title:"Finance", icon:"💰", badge:"⭐ Popular", desc:"Finance, investments & risk analysis.", duration:"4 Months", students:"1100+", rating:"4.6/5", brochure:"brochures/FINANCE.pdf",image:"images/finance.jpg" },
+
+  { title:"Power BI", icon:"📊", badge:"⭐ Popular", desc:"Dashboards, DAX & reports.", duration:"2 Months", students:"1600+", rating:"4.7/5", brochure:"brochures/POWER BI.pdf",image:"images/powerbi.webp" },
+
+  { title:"SAP", icon:"🏢", badge:"⭐ Popular", desc:"ERP modules & enterprise solutions.", duration:"6 Months", students:"1300+", rating:"4.7/5", brochure:"brochures/SAP.pdf",image:"images/sap.jpg" },
+
+  { title:"ChatGPT & Prompt Engineering", icon:"🧠", badge:"🔥 Trending", desc:"AI prompts, automation & APIs.", duration:"2 Months", students:"1500+", rating:"4.7/5", brochure:"brochures/CHAT GPT.pdf",image:"images/chatgpt.jpg" },
+
+  { title:"Video Editing", icon:"🎬", badge:"🔥 Trending", desc:"Premiere Pro, effects & production.", duration:"2 Months", students:"1400+", rating:"4.7/5", brochure:"brochures/Video Editing Course.pdf",image:"images/videoediting.jpeg" },
+
+  { title:"UI / UX Design", icon:"🎨", badge:"🔥 Trending", desc:"Figma, UX research & prototyping.", duration:"4 Months", students:"1500+", rating:"4.8/5", brochure:"brochures/UI&UX.pdf",image:"images/uiux.avif" },
+
+  { title:"Biomedical Technology", icon:"🧬", badge:"⭐ Popular", desc:"Medical devices & biotech basics.", duration:"4 Months", students:"800+", rating:"4.5/5", brochure:"brochures/Biomedical Syllabus Copy.pdf",image:"images/biomedical.webp" },
+
+  { title:"Stock Market", icon:"📈", badge:"⭐ Popular", desc:"Trading, analysis & investment strategies.", duration:"3 Months", students:"1200+", rating:"4.6/5", brochure:"brochures/STOCK MARKETING.pdf",image:"images/stockmarket.webp" }
+
+];
+
+const container=document.getElementById("programs");
+const search=document.getElementById("search");
+
+function render(list){
+ container.innerHTML="";
+ list.forEach(p=>{
+  container.innerHTML+=`
+  <div class="program-container">
+   <div class="left-section">
+    <div class="header">
+     <div class="logos">${p.icon}</div><h1>${p.title}</h1>
+    </div>
+    <div class="trending-badge">${p.badge}</div>
+    <p class="description">${p.desc}</p>
+    <div class="stats">
+     <div class="stat-item">📅 ${p.duration}</div>
+     <div class="stat-item">👥 ${p.students}</div>
+     <div class="stat-item">⭐ ${p.rating}</div>
+    </div>
+    <p class="certification-title">Certifications Included :</p>
+    <div class="certification-logos">
+     <div class="cert-box"><div class="iso-logo">ISO</div>Certified</div>
+     <div class="cert-box"><div class="aicte-logo">AICTE</div>Approved</div>
+    </div>
+    <div class="buttons">
+     <a href="${p.brochure}" download class="btn btn-outline">📥 Download Brochure</a>
+     <a href="${p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.html" class="btn btn-outline">👁️ View Details</a>
+     <button class="btn btn-solid" onclick="openModal('${p.title}')">Enroll Now</button>
+    </div>
+   </div>
+   <div class="right-section">
+    <div class="person-image">
+  <div class="slide-image" style="background-image:url('${p.image}')"></div>
+</div>
+
+
+    <div class="stats-card stats-card-1">Students<br><b>${p.students}</b></div>
+    <div class="stats-card stats-card-2">Completion<br><b>95%</b></div>
+    <div class="stats-card stats-card-3">Placement<br><b>89%</b></div>
+    <div class="stats-card stats-card-4">Progress<br><b>80%</b><div class="progress-bar"><div class="progress-fill"></div></div></div>
+   </div>
+  </div>`;
+ });
+}
+
+render(programs);
+
+search.oninput=()=>render(programs.filter(p=>p.title.toLowerCase().includes(search.value.toLowerCase())));
+
+function openModal(course){
+ document.getElementById("courseName").value=course;
+ document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+ document.getElementById("modal").style.display="none";
+}
+</script>
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  /* Hamburger toggle */
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  /* Dropdown toggle on mobile */
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggle.closest('.dropdown').classList.toggle('open');
+    });
+  });
+
+  /* Close menu when link clicked */
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

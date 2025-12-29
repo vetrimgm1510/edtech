@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Demo</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ---------- Animated Gradient Background ---------- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: -1;
+  }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Glass Card ---------- */
+.form-container {
+  backdrop-filter: blur(15px);
+  padding: 40px 35px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+/* ---------- Input Groups ---------- */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 14px 45px 14px 15px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: black;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: black;
+}
+
+.input-group select {
+  color: black;
+}
+
+.input-group i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+}
+
+/* ---------- Button ---------- */
+.form-container button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #29ef6b, #62d156);
+  color: #fff;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,242,254,0.5);
+}
+
+/* ---------- Thank You Popup ---------- */
+#thankYouPopup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 999;
+}
+
+#thankYouPopup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background: #2ecc71;
+  padding: 30px 50px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: scale(0.8);
+  animation: popupScale 0.4s forwards;
+}
+
+/* ---------- Tick Animation ---------- */
+.popup-content::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  font-size: 40px;
+  color: #fff;
+  animation: tickAnim 0.4s forwards 0.2s;
+}
+
+@keyframes tickAnim {
+  to { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes popupScale {
+  to { transform: scale(1); }
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width: 480px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+  .popup-content {
+    padding: 25px 30px;
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+ <iframe id="bg" src="bg.html"></iframe>
+
+
+
+<div class="form-container">
+  <h2>Book a Free Demo</h2>
+  <form id="demoForm">
+    
+    <div class="input-group">
+      <input type="text" name="name" placeholder="Your Name" required>
+    </div>
+
+    <div class="input-group">
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+    </div>
+
+    <div class="input-group">
+      <input type="email" name="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="input-group">
+      <input type="text" name="location" placeholder="Location" required>
+    </div>
+
+    <div class="input-group">
+      <input type="date" name="date" required>
+    </div>
+
+    <div class="input-group">
+      <select name="course" required>
+        <option value="">-- Select Course --</option>
+        <option>Python Full Stack</option>
+        <option>Django Development</option>
+        <option>Data Science</option>
+        <option>Machine Learning</option>
+        <option>Cloud & DevOps</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <textarea name="message" rows="3" placeholder="Message"></textarea>
+    </div>
+
+    <button type="submit">Book Demo</button>
+  </form>
+</div>
+
+<!-- Thank You Popup -->
+<div id="thankYouPopup">
+  <div class="popup-content">Thank you! Your demo is booked.</div>
+</div>
+
+<script>
+const form = document.getElementById("demoForm");
+const popup = document.getElementById("thankYouPopup");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  // Show popup
+  popup.classList.add("show");
+
+  // Hide popup after 3 seconds
+  setTimeout(() => popup.classList.remove("show"), 3000);
+
+  // Send data to Google Sheets
+    fetch("https://script.google.com/macros/s/AKfycbzBFpP4jD6luExm0X7TbXzBpMOvySKD572nbOTUhokcCtbluSfOs96OxKRVYQrp49qg3w/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: new FormData(form)
+  }).catch(err => console.error("Error:", err));
+
+  form.reset();
+});
+</script>
+
+</body>
+</html>

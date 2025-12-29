@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+#mlCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.hero h1{
+  font-size:3.2rem;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#a855f7,#22d3ee);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  max-width:820px;
+  margin-top:18px;
+  font-size:1.15rem;
+  color:#c7d2fe;
+}
+.hero-btn{
+  margin-top:32px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#a855f7,#22d3ee);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:.3s;
+}
+.hero-btn:hover{transform:scale(1.05);}
+
+/* SECTIONS */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* SNAPSHOT */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* LEARNING PATH */
+.path-title{
+  text-align:center;
+  margin-bottom:60px;
+  font-size:2.2rem;
+  color:#a855f7;
+}
+.timeline{
+  position:relative;
+  max-width:720px;
+  margin:auto;
+  padding-left:40px;
+}
+.timeline .line{
+  position:absolute;
+  left:18px;
+  top:0;
+  width:4px;
+  height:0;
+  background:linear-gradient(to bottom,#a855f7,#22d3ee);
+  transition:height 1.2s ease;
+}
+.path-step{
+  position:relative;
+  margin-bottom:50px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.path-step.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.path-step span{
+  position:absolute;
+  left:-6px;
+  top:0;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#020617;
+  border:3px solid #a855f7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#a855f7;
+}
+.path-step p{
+  margin-left:60px;
+  background:rgba(255,255,255,0.05);
+  padding:18px 22px;
+  border-radius:14px;
+}
+
+/* SKILLS */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#a855f7,#22d3ee);
+  transition:width 1.5s ease;
+}
+
+/* SYLLABUS */
+.module{
+  border-left:4px solid #a855f7;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+.module h3{
+  color:#a855f7;
+  margin-bottom:10px;
+}
+
+/* ROLES */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#581c87,#020617);
+  border-radius:40px;
+}
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#22d3ee;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="mlCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>Machine Learning</span></h1>
+    <p>Learn how machines think, predict, and automate decisions using real-world data</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- SNAPSHOT -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 4–6 Months</div>
+  <div class="card">📊 Data-Driven Models</div>
+  <div class="card">🤖 Algorithms & AI</div>
+  <div class="card">🚀 Career Oriented</div>
+</section>
+
+<!-- LEARNING PATH -->
+<section class="path reveal">
+  <h2 class="path-title">Learning Roadmap</h2>
+  <div class="timeline">
+    <div class="line"></div>
+
+    <div class="path-step"><span>01</span><p>Python & Math Foundations</p></div>
+    <div class="path-step"><span>02</span><p>Data Analysis & Visualization</p></div>
+    <div class="path-step"><span>03</span><p>Supervised & Unsupervised Learning</p></div>
+    <div class="path-step"><span>04</span><p>Deep Learning & Neural Networks</p></div>
+    <div class="path-step"><span>05</span><p>Model Deployment & Projects</p></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#a855f7;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Python & NumPy</span><div class="bar"><div class="fill" data-progress="95%"></div></div></div>
+  <div class="skill"><span>Machine Learning Algorithms</span><div class="bar"><div class="fill" data-progress="90%"></div></div></div>
+  <div class="skill"><span>Deep Learning</span><div class="bar"><div class="fill" data-progress="85%"></div></div></div>
+  <div class="skill"><span>Model Deployment</span><div class="bar"><div class="fill" data-progress="80%"></div></div></div>
+</section>
+
+<!-- SYLLABUS -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#a855f7;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Python, Statistics & Math</p></div>
+  <div class="module"><h3>Module 2</h3><p>Data Preprocessing & EDA</p></div>
+  <div class="module"><h3>Module 3</h3><p>ML Algorithms</p></div>
+  <div class="module"><h3>Module 4</h3><p>Deep Learning</p></div>
+  <div class="module"><h3>Module 5</h3><p>Capstone Project</p></div>
+
+  <a href="brochures/ML SYLLABUS COPY.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ROLES -->
+<section class="roles reveal">
+  <div class="role">Machine Learning Engineer</div>
+  <div class="role">Data Scientist</div>
+  <div class="role">AI Engineer</div>
+  <div class="role">Research Analyst</div>
+</section>
+
+<!-- CTA -->
+<section class="cta reveal" id="apply">
+  <h2>Build Intelligent Systems</h2>
+  <p>Turn data into powerful predictions</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"));
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(e=>{
+    if(e[0].isIntersecting){
+      bar.style.width=bar.dataset.progress;
+      o.disconnect();
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* Learning Path Animation */
+const steps=document.querySelectorAll(".path-step");
+const line=document.querySelector(".timeline .line");
+const pathObs=new IntersectionObserver(e=>{
+  if(e[0].isIntersecting){
+    steps.forEach((s,i)=>{
+      setTimeout(()=>{
+        s.classList.add("show");
+        line.style.height=`${(i+1)*90}px`;
+      },i*300);
+    });
+    pathObs.disconnect();
+  }
+},{threshold:0.3});
+pathObs.observe(document.querySelector(".timeline"));
+
+/* ML Neural Animation */
+const canvas=document.getElementById("mlCanvas");
+const ctx=canvas.getContext("2d");
+let w,h;
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+resize();addEventListener("resize",resize);
+
+const nodes=[...Array(60)].map(()=>({
+  x:Math.random()*w,y:Math.random()*h,
+  vx:(Math.random()-.5)*0.6,vy:(Math.random()-.5)*0.6
+}));
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  nodes.forEach(n=>{
+    n.x+=n.vx;n.y+=n.vy;
+    if(n.x<0||n.x>w) n.vx*=-1;
+    if(n.y<0||n.y>h) n.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2.5,0,Math.PI*2);
+    ctx.fillStyle="#a855f7";
+    ctx.fill();
+
+    nodes.forEach(m=>{
+      const d=Math.hypot(n.x-m.x,n.y-m.y);
+      if(d<120){
+        ctx.strokeStyle=`rgba(168,85,247,${1-d/120})`;
+        ctx.beginPath();
+        ctx.moveTo(n.x,n.y);
+        ctx.lineTo(m.x,m.y);
+        ctx.stroke();
+      }
+    });
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

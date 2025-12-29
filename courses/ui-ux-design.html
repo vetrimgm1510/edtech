@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI / UX Design | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+#designCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.hero h1{
+  font-size:3.2rem;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#38bdf8,#a855f7);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  max-width:820px;
+  margin-top:18px;
+  font-size:1.15rem;
+  color:#c7d2fe;
+}
+.hero-btn{
+  margin-top:32px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#38bdf8,#a855f7);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:.3s;
+}
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path-title{
+  text-align:center;
+  margin-bottom:60px;
+  font-size:2.2rem;
+  color:#38bdf8;
+}
+.timeline{
+  position:relative;
+  max-width:720px;
+  margin:auto;
+  padding-left:40px;
+}
+.timeline .line{
+  position:absolute;
+  left:18px;
+  top:0;
+  width:4px;
+  height:0;
+  background:linear-gradient(to bottom,#38bdf8,#a855f7);
+  transition:height 1.2s ease;
+}
+.path-step{
+  position:relative;
+  margin-bottom:50px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.path-step.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.path-step span{
+  position:absolute;
+  left:-6px;
+  top:0;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#020617;
+  border:3px solid #38bdf8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#38bdf8;
+}
+.path-step p{
+  margin-left:60px;
+  background:rgba(255,255,255,0.05);
+  padding:18px 22px;
+  border-radius:14px;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#38bdf8,#a855f7);
+  transition:width 1.6s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #38bdf8;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+.module h3{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#38bdf8,#020617);
+  border-radius:40px;
+}
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#a855f7;
+  color:white;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="designCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>UI / UX Design Mastery</span></h1>
+    <p>Learn user-centric design, wireframing, prototyping, and real-world product design workflows</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">🎨 Design Thinking</div>
+  <div class="card">🧩 Wireframes & Prototypes</div>
+  <div class="card">📱 App & Web UI</div>
+  <div class="card">💼 Portfolio Projects</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 class="path-title">Learning Roadmap</h2>
+  <div class="timeline">
+    <div class="line"></div>
+
+    <div class="path-step"><span>01</span><p>Design Principles & UX Foundations</p></div>
+    <div class="path-step"><span>02</span><p>User Research & Information Architecture</p></div>
+    <div class="path-step"><span>03</span><p>Wireframing & Prototyping (Figma)</p></div>
+    <div class="path-step"><span>04</span><p>UI Design Systems & Accessibility</p></div>
+    <div class="path-step"><span>05</span><p>Real-World Projects & Portfolio</p></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#38bdf8;">Skills You Will Build</h2>
+
+  <div class="skill"><span>User Experience Design</span><div class="bar"><div class="fill" data-progress="95%"></div></div></div>
+  <div class="skill"><span>Wireframing & Prototyping</span><div class="bar"><div class="fill" data-progress="92%"></div></div></div>
+  <div class="skill"><span>Design Systems</span><div class="bar"><div class="fill" data-progress="88%"></div></div></div>
+  <div class="skill"><span>Usability Testing</span><div class="bar"><div class="fill" data-progress="85%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#38bdf8;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>UX Fundamentals & User Psychology</p></div>
+  <div class="module"><h3>Module 2</h3><p>Wireframing & Prototyping</p></div>
+  <div class="module"><h3>Module 3</h3><p>UI Design & Visual Hierarchy</p></div>
+  <div class="module"><h3>Module 4</h3><p>Design Systems & Accessibility</p></div>
+  <div class="module"><h3>Module 5</h3><p>Live Projects & Portfolio Review</p></div>
+
+  <a href="brochures/UI&UX.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">UI Designer</div>
+  <div class="role">UX Designer</div>
+  <div class="role">Product Designer</div>
+  <div class="role">Design Consultant</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Design Products People Love</h2>
+  <p>Become a professional UI / UX designer</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+document.querySelectorAll(".reveal").forEach(el=>{
+  new IntersectionObserver(e=>{
+    e[0].isIntersecting && el.classList.add("show");
+  },{threshold:0.15}).observe(el);
+});
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  new IntersectionObserver(e=>{
+    if(e[0].isIntersecting){
+      bar.style.width=bar.dataset.progress;
+    }
+  },{threshold:0.4}).observe(bar);
+});
+
+/* Learning Path */
+const steps=document.querySelectorAll(".path-step");
+const line=document.querySelector(".timeline .line");
+new IntersectionObserver(e=>{
+  if(e[0].isIntersecting){
+    steps.forEach((s,i)=>{
+      setTimeout(()=>{
+        s.classList.add("show");
+        line.style.height=`${(i+1)*90}px`;
+      },i*300);
+    });
+  }
+},{threshold:0.3}).observe(document.querySelector(".timeline"));
+
+/* ===== UI/UX Floating Cards Animation ===== */
+const canvas=document.getElementById("designCanvas");
+const ctx=canvas.getContext("2d");
+let w,h;
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+resize();addEventListener("resize",resize);
+
+const cards=[...Array(40)].map(()=>({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  w:40+Math.random()*40,
+  h:28+Math.random()*30,
+  dx:(Math.random()-.5)*0.6,
+  dy:(Math.random()-.5)*0.6
+}));
+
+function draw(){
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle="rgba(167,139,250,0.35)";
+  cards.forEach(c=>{
+    c.x+=c.dx; c.y+=c.dy;
+    if(c.x<0||c.x>w) c.dx*=-1;
+    if(c.y<0||c.y>h) c.dy*=-1;
+    ctx.strokeRect(c.x,c.y,c.w,c.h);
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>

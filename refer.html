@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refer & Earn | NXTSYNC</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#070b1a;
+  --card:rgba(255,255,255,0.08);
+  --glass:rgba(255,255,255,0.12);
+  --accent:#ffd166;
+  --accent2:#fb8b24;
+  --white:#ffffff;
+}
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,system-ui,Segoe UI,Arial;
+}
+
+body{
+  background:
+    radial-gradient(circle at top right,#1b2a6b,transparent 40%),
+    radial-gradient(circle at bottom left,#111a40,transparent 45%),
+    var(--bg);
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ================= LAYOUT ================= */
+.main{
+  max-width:1200px;
+  height: 100vh;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+@media(max-width:900px){
+  .main{
+    margin-top: 40px;
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+/* ================= LEFT CONTENT ================= */
+.tag{
+  letter-spacing:4px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+h1{
+  font-size:52px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+h1 span{
+  color:var(--accent);
+}
+
+.desc{
+  font-size:17px;
+  color:rgba(255,255,255,.85);
+  max-width:520px;
+  margin-bottom:35px;
+}
+
+.stats{
+  display:flex;
+  gap:25px;
+  margin-bottom:35px;
+}
+
+.stat{
+  background:var(--card);
+  padding:18px 22px;
+  border-radius:14px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.stat h3{
+  font-size:28px;
+  color:var(--accent);
+}
+
+.stat p{
+  font-size:13px;
+  opacity:.8;
+}
+
+@media(max-width:900px){
+  .stats{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+}
+
+/* ================= CTA ================= */
+.cta{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 30px;
+  font-size:16px;
+  font-weight:700;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  color:#081229;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 15px 40px rgba(255,209,102,.3);
+  transition:.3s;
+}
+
+.cta:hover{
+  transform:translateY(-5px) scale(1.03);
+}
+
+/* ================= RIGHT VISUAL ================= */
+.visual{
+  position:relative;
+  height:420px;
+  border-radius:30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  backdrop-filter:blur(14px);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  overflow:hidden;
+}
+
+/* glow rings */
+.ring{
+  position:absolute;
+  border-radius:50%;
+  border:2px dashed rgba(255,255,255,.12);
+  animation:spin 14s linear infinite;
+}
+
+.ring.one{width:320px;height:320px;top:50px;left:50px}
+.ring.two{width:220px;height:220px;bottom:60px;right:60px;animation-duration:9s}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* ================= COINS ================= */
+.coin{
+  position:absolute;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:conic-gradient(#ffd166,#fb8b24,#ff6b6b);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:900;
+  color:#081229;
+  box-shadow:0 20px 40px rgba(255,107,107,.25);
+}
+
+@keyframes coinPop{
+  0%{opacity:0;transform:translateY(40px) scale(.4)}
+  20%{opacity:1}
+  70%{transform:translateY(-160px) scale(1.05)}
+  100%{opacity:0;transform:translateY(-260px) scale(.9)}
+}
+
+.coin.pop{
+  animation:coinPop 2.4s cubic-bezier(.16,.8,.43,1) forwards;
+}
+
+/* ================= MODAL ================= */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  visibility:hidden;
+  opacity:0;
+  transition:.2s;
+}
+
+.modal.active{
+  visibility:visible;
+  opacity:1;
+}
+
+.modal-box{
+  background:white;
+  color:#081229;
+  width:100%;
+  max-width:520px;
+  padding:30px;
+  border-radius:20px;
+}
+
+.modal-box h2{
+  margin-bottom:15px;
+}
+
+.modal-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+nav {
+      position: fixed;
+      top: 0;
+      width: 90%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      /* background: rgb(92, 90, 90) !important; */
+      background-color: #010e3a;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      font-size: 1.05rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Get Started Button in Navbar */
+    .btn-login {
+      background: rgb(44, 214, 44);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(129, 133, 130, 0.4);
+    }
+
+    /* Dropdown wrapper */
+    .nav-links .dropdown {
+      position: relative;
+    }
+
+    /* Dropdown menu (hidden by default) */
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #faf9f9;
+      padding: 10px 0;
+      min-width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    /* Show on hover */
+    .nav-links .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Dropdown items */
+    .nav-links .dropdown-menu li {
+      list-style: none;
+    }
+
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #121212;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links .dropdown-menu a:hover {
+      background: #9eedc9;
+    }
+
+    /* Align Courses + caret inline */
+    .dropdown-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-header a {
+      text-decoration: none;
+      color: whitesmoke;
+      font-weight: 500;
+    }
+
+    /* Caret beside text */
+    .dropdown-toggle {
+      font-size: 14px;
+      cursor: pointer;
+      color: whitesmoke;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Hamburger button styling */
+    .nav-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      padding: 0;
+      box-sizing: border-box;
+      display: none;
+    }
+
+    .nav-toggle:focus {
+      outline: none;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: whitesmoke;
+      border-radius: 3px;
+      transition: all 0.3s linear;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      position: absolute;
+    }
+
+    .hamburger::before {
+      top: -10px;
+    }
+
+    .hamburger::after {
+      top: 10px;
+    }
+
+    .nav-toggle.open .hamburger {
+      background-color: transparent;
+    }
+
+    .nav-toggle.open .hamburger::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .nav-toggle.open .hamburger::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* Hide nav links by default on mobile */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 90%;
+        background:black;
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 1001;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+      }
+
+      .nav-links a:hover {
+        background: var(--accent-hover);
+        color: white;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* Show nav-links normally on desktops */
+    @media (min-width: 901px) {
+      .nav-toggle {
+        display: none;
+      }
+      .nav-links {
+        display: flex !important;
+        position: static;
+        background: none;
+        box-shadow: none;
+        width: auto;
+      }
+    }
+
+    .nav-get-started {
+      margin: 1rem 20px;
+    }
+
+    .nav-get-started .btn-login {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (min-width: 901px) {
+      .nav-get-started {
+        margin: 0;
+      }
+      .nav-get-started .btn-login {
+        width: auto;
+        padding: 10px 20px;
+      }
+    }
+    .footer {
+  width: 90%;
+  margin: auto;
+  
+  /* background: rgb(85, 84, 84); */
+  background-color: #010e3a;
+  color: orange;
+  padding: 60px 30px;
+   border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand-logo img {
+  height: 50px;
+}
+
+.brand-description {
+  color: rgba(250, 247, 247, 0.7);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: orange;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: rgba(253, 250, 250, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.contact-item {
+  color: rgba(246, 244, 244, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* Responsive styling for tablets and mobiles */
+@media (max-width: 900px) {
+  .footer {
+    margin-top: 190px;
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .brand-description {
+    font-size: 13px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 13px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+      margin-top: 190px;
+    padding: 30px 15px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+
+  .brand-description {
+    font-size: 12px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 12px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 420px) {
+  .footer{
+    margin-top: 26rem;
+  }
+  
+}
+@media (max-width: 360px){
+  .footer{
+    margin-top: 29rem;
+  }
+}
+  
+
+.footer-bottom {
+  padding: 14px 20px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto 0;
+
+background-color: #010e3a;
+
+  border-radius: 50px;
+}
+
+.footer-bottom div {
+  margin: 6px 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+/* Tagline text */
+.tagline {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+  .footer-bottom {
+    width: 95%;
+    padding: 12px 15px;
+    border-radius: 30px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+  .footer-bottom {
+    width: 100%;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+     <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../logo.png" alt="NxtSync Logo">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <div class="dropdown-header">
+            <a href="../courses/">Programs</a>
+            <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="../courses/more/webdev.html">Web Development</a></li>
+            <li><a href="../courses/more/AI.html">AI & ML</a></li>
+            <li><a href="../courses/more/cc.html">Cloud Computing</a></li>
+            <li><a href="../courses/more/uiux.html">UI/UX Design</a></li>
+            <li><a href="../courses/">View More</a></li>
+          </ul>
+        </li>
+        <li><a href="../about/">About Us</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
+        <li><a href="../refer.html">Refer & Earn</a></li>
+        <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
+        <li class="nav-login">
+          <a href="javascript:void(0)" class="btn-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<section class="main">
+
+  <!-- LEFT -->
+  <div>
+    <div class="tag">REFER & EARN</div>
+
+    <h1>Earn <span>₹500</span><br>for every friend</h1>
+
+    <p class="desc">
+      Invite your friends to NXTSYNC. When they enroll, you earn instant cashback or vouchers.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>₹500</h3>
+        <p>Per Referral</p>
+      </div>
+      <div class="stat">
+        <h3>Instant</h3>
+        <p>Reward Tracking</p>
+      </div>
+      <div class="stat">
+        <h3>Unlimited</h3>
+        <p>Earnings</p>
+      </div>
+    </div>
+
+    <button class="cta" id="openModal">
+      Start Referring <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="visual" id="visual">
+    <div class="ring one"></div>
+    <div class="ring two"></div>
+  </div>
+
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="close" id="close">&times;</span>
+    <h2>Refer a Friend</h2>
+    <input placeholder="Your Name">
+    <input placeholder="Your Phone">
+    <input placeholder="Friend's Name">
+    <input placeholder="Friend's Phone">
+    <button class="cta" style="width:100%">Submit Referral</button>
+  </div>
+</div>
+<!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-section">
+          <div class="brand-logo"><img src="../logo.png" alt="NxtSync Logo"></div>
+          <p class="brand-description">Empowering the next generation with cutting-edge courses and exclusive internship opportunities. Building careers, one student at a time.</p>
+<div style="display:flex; flex-direction:column; gap:0.8rem; align-items:flex-start;">      
+      <a href="/pdf/privacypolicy.pdf" target="_blank" style="color:#fcfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Privacy Policy</a>
+      <a href="/pdf/Termsandconditions.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Terms & Conditions</a>
+      <a href="/pdf/termsandconditions-interns.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Internship Terms & Conditions</a>
+    </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info"><div class="contact-item"><a href="https://maps.app.goo.gl/wj1dTCTgNmoQgTGu9" style="text-decoration: none; color: white;" >📍 1st floor, Divya diamonds building, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033</a></div><div class="contact-item"><a href="tel:+916302655033"  style="text-decoration: none; color: white;">+916302655033</a></div><div class="contact-item"><a href="mailto:support@nxtsync.in" style="color: white; text-decoration: none;">✉️ support@nxtsync.in</a></div></div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+  <a href="https://www.instagram.com/nxt_sync" class="social-link" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com/company/nxtsync" class="social-link" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+</div>
+      </div>
+     
+    </div>
+  </footer>
+  <div class="footer-bottom">
+  <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
+  <div class="tagline">Building Tomorrow's Leaders Today</div>
+</div>
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  /* Hamburger toggle */
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  /* Dropdown toggle on mobile */
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggle.closest('.dropdown').classList.toggle('open');
+    });
+  });
+
+  /* Close menu when link clicked */
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+/* ================= COIN POP ================= */
+const visual=document.getElementById('visual');
+
+function spawnCoin(){
+  const c=document.createElement('div');
+  c.className='coin pop';
+  c.innerText='₹';
+  c.style.left=Math.random()*70+15+'%';
+  c.style.bottom='30px';
+  visual.appendChild(c);
+  setTimeout(()=>c.remove(),2400);
+}
+
+setInterval(spawnCoin,800);
+
+/* ================= MODAL ================= */
+const modal=document.getElementById('modal');
+document.getElementById('openModal').onclick=()=>modal.classList.add('active');
+document.getElementById('close').onclick=()=>modal.classList.remove('active');
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('active')}
+</script>
+
+</body>
+</html>

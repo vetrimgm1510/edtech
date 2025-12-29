@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Systems | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+#embeddedCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:3.1rem;
+}
+
+.hero h1 span{
+  color:#22c55e;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:16px;
+  font-size:1.15rem;
+  color:#86efac;
+}
+
+.hero-btn{
+  margin-top:30px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#22c55e,#38bdf8);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path{max-width:900px;}
+
+.step{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.step div:first-child{
+  font-size:1.7rem;
+  font-weight:800;
+  color:#22c55e;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#22c55e,#38bdf8);
+  transition:width 1.5s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #22c55e;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+
+.module h3{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#064e3b,#020617);
+  border-radius:40px;
+}
+
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#22c55e;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="embeddedCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>Embedded Systems</span> Program</h1>
+    <p>Design, program, and debug real-time embedded systems used in automotive, IoT, and industrial devices</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 3–4 Months</div>
+  <div class="card">🔧 Hardware + Firmware</div>
+  <div class="card">⚡ Real-Time Systems</div>
+  <div class="card">🎯 Industry Oriented</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 style="margin-bottom:40px;color:#22c55e;">Learning Path</h2>
+
+  <div class="step"><div>01</div><div>Electronics & C Programming</div></div>
+  <div class="step"><div>02</div><div>Microcontrollers & Architecture</div></div>
+  <div class="step"><div>03</div><div>Embedded C & Peripherals</div></div>
+  <div class="step"><div>04</div><div>RTOS & Interrupts</div></div>
+  <div class="step"><div>05</div><div>IoT & Industry Projects</div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#22c55e;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Embedded C</span><div class="bar"><div class="fill" data="90%"></div></div></div>
+  <div class="skill"><span>Microcontrollers</span><div class="bar"><div class="fill" data="85%"></div></div></div>
+  <div class="skill"><span>RTOS</span><div class="bar"><div class="fill" data="80%"></div></div></div>
+  <div class="skill"><span>IoT & Communication</span><div class="bar"><div class="fill" data="75%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#22c55e;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Basics of Electronics & C</p></div>
+  <div class="module"><h3>Module 2</h3><p>Microcontroller Architecture</p></div>
+  <div class="module"><h3>Module 3</h3><p>Embedded C & Interfacing</p></div>
+  <div class="module"><h3>Module 4</h3><p>RTOS, Timers & Interrupts</p></div>
+  <div class="module"><h3>Module 5</h3><p>IoT Applications & Projects</p></div>
+
+  <a href="brochures/EMBEDDED SYSTEMS (1).pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">Embedded Engineer</div>
+  <div class="role">Firmware Developer</div>
+  <div class="role">IoT Engineer</div>
+  <div class="role">Automation Engineer</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Build the Brain Behind Smart Devices</h2>
+  <p>Kickstart your embedded systems career today</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      bar.style.width=bar.getAttribute("data");
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* Circuit Board Animation */
+const canvas=document.getElementById("embeddedCanvas");
+const ctx=canvas.getContext("2d");
+let w,h;
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+resize(); window.addEventListener("resize",resize);
+
+const nodes=Array.from({length:45},()=>({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  vx:(Math.random()-0.5)*0.4,
+  vy:(Math.random()-0.5)*0.4
+}));
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  nodes.forEach(n=>{
+    n.x+=n.vx; n.y+=n.vy;
+    if(n.x<0||n.x>w) n.vx*=-1;
+    if(n.y<0||n.y>h) n.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
+    ctx.fillStyle="#22c55e";
+    ctx.fill();
+
+    nodes.forEach(m=>{
+      const d=Math.hypot(n.x-m.x,n.y-m.y);
+      if(d<120){
+        ctx.strokeStyle="rgba(56,189,248,0.15)";
+        ctx.beginPath();
+        ctx.moveTo(n.x,n.y);
+        ctx.lineTo(m.x,m.y);
+        ctx.stroke();
+      }
+    });
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

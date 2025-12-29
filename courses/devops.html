@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+#devopsCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:3.1rem;
+}
+
+.hero h1 span{
+  color:#2dd4bf;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:16px;
+  font-size:1.15rem;
+  color:#99f6e4;
+}
+
+.hero-btn{
+  margin-top:30px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#2dd4bf,#22c55e);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path{max-width:900px;}
+
+.step{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.step div:first-child{
+  font-size:1.7rem;
+  font-weight:800;
+  color:#2dd4bf;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#2dd4bf,#22c55e);
+  transition:width 1.5s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #2dd4bf;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+
+.module h3{
+  color:#2dd4bf;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#134e4a,#020617);
+  border-radius:40px;
+}
+
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#2dd4bf;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="devopsCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>DevOps</span> Engineering Program</h1>
+    <p>Master CI/CD pipelines, cloud infrastructure, automation, and monitoring used by modern tech companies</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 3 Months</div>
+  <div class="card">⚙ CI/CD & Automation</div>
+  <div class="card">☁ Cloud & Containers</div>
+  <div class="card">🎯 Job Oriented</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 style="margin-bottom:40px;color:#2dd4bf;">Learning Path</h2>
+
+  <div class="step"><div>01</div><div>Linux & Networking Basics</div></div>
+  <div class="step"><div>02</div><div>Version Control & Git</div></div>
+  <div class="step"><div>03</div><div>CI/CD Pipelines</div></div>
+  <div class="step"><div>04</div><div>Containers & Cloud</div></div>
+  <div class="step"><div>05</div><div>Monitoring & Automation</div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#2dd4bf;">Skills You Will Build</h2>
+
+  <div class="skill"><span>CI/CD Pipelines</span><div class="bar"><div class="fill" data="90%"></div></div></div>
+  <div class="skill"><span>Docker & Kubernetes</span><div class="bar"><div class="fill" data="85%"></div></div></div>
+  <div class="skill"><span>Cloud Infrastructure</span><div class="bar"><div class="fill" data="80%"></div></div></div>
+  <div class="skill"><span>Monitoring & Automation</span><div class="bar"><div class="fill" data="88%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#2dd4bf;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Linux, Networking & Shell Scripting</p></div>
+  <div class="module"><h3>Module 2</h3><p>Git, GitHub & Version Control</p></div>
+  <div class="module"><h3>Module 3</h3><p>CI/CD with Jenkins</p></div>
+  <div class="module"><h3>Module 4</h3><p>Docker, Kubernetes & Cloud</p></div>
+  <div class="module"><h3>Module 5</h3><p>Monitoring, Logging & Automation</p></div>
+
+  <a href="brochures/DEVOPS.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">DevOps Engineer</div>
+  <div class="role">Cloud Engineer</div>
+  <div class="role">Site Reliability Engineer</div>
+  <div class="role">Platform Engineer</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Automate. Deploy. Scale.</h2>
+  <p>Start your DevOps engineering career</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      bar.style.width=bar.getAttribute("data");
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* DevOps CI/CD Canvas */
+const canvas=document.getElementById("devopsCanvas");
+const ctx=canvas.getContext("2d");
+let w,h,angle=0;
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+resize(); window.addEventListener("resize",resize);
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  const cx=w/2, cy=h/2, r=120;
+  const stages=5;
+
+  for(let i=0;i<stages;i++){
+    const a=(Math.PI*2/stages)*i+angle;
+    const x=cx+Math.cos(a)*r;
+    const y=cy+Math.sin(a)*r;
+
+    ctx.beginPath();
+    ctx.arc(x,y,6,0,Math.PI*2);
+    ctx.fillStyle="#2dd4bf";
+    ctx.fill();
+  }
+
+  angle+=0.01;
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

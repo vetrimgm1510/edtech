@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artificial Intelligence Program | NxtSync</title>
+
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #050816;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#aiCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3.4rem;
+  letter-spacing: 1px;
+}
+
+.hero h1 span {
+  color: #38bdf8;
+}
+
+.hero p {
+  max-width: 620px;
+  margin-top: 15px;
+  color: #c7d2fe;
+  font-size: 1.15rem;
+}
+
+.hero-btn {
+  margin-top: 30px;
+  padding: 15px 38px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= SECTION BASE ================= */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 110px 20px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.snapshot-card {
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path {
+  max-width: 900px;
+}
+
+.path-step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.path-step div:first-child {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+/* ================= SKILLS ================= */
+.skills {
+  max-width: 900px;
+}
+
+.skill {
+  margin-bottom: 22px;
+}
+
+.bar {
+  height: 10px;
+  background: #1e293b;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  transition: width 1.6s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.syllabus {
+  max-width: 1000px;
+}
+
+.module {
+  border-left: 4px solid #38bdf8;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+}
+
+/* ================= OUTCOMES ================= */
+.outcomes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 25px;
+}
+
+.outcome {
+  padding: 28px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+/* ================= CTA ================= */
+.cta {
+  text-align: center;
+  padding: 120px 20px;
+  background: radial-gradient(circle at top, #1e3a8a, #020617);
+  border-radius: 40px;
+}
+
+.cta a {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 16px 42px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 40px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="aiCanvas"></canvas>
+
+  <div class="hero-content">
+    <h1>Artificial <span>Intelligence</span></h1>
+    <p>Design, train and deploy intelligent systems using modern AI techniques</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="snapshot-card">⏳ 6 Months Program</div>
+  <div class="snapshot-card">🧠 Beginner → Advanced</div>
+  <div class="snapshot-card">💻 Real-World Projects</div>
+  <div class="snapshot-card">🎯 Placement Assistance</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 style="margin-bottom:40px;color:#38bdf8;">Learning Path</h2>
+
+  <div class="path-step"><div>01</div><div>AI Foundations & Python</div></div>
+  <div class="path-step"><div>02</div><div>Machine Learning Models</div></div>
+  <div class="path-step"><div>03</div><div>Deep Learning Architectures</div></div>
+  <div class="path-step"><div>04</div><div>NLP & Computer Vision</div></div>
+  <div class="path-step"><div>05</div><div>Capstone AI Projects</div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills reveal">
+  <h2 style="margin-bottom:35px;color:#38bdf8;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Python</span><div class="bar"><div class="fill" data="90%"></div></div></div>
+  <div class="skill"><span>Machine Learning</span><div class="bar"><div class="fill" data="85%"></div></div></div>
+  <div class="skill"><span>Deep Learning</span><div class="bar"><div class="fill" data="80%"></div></div></div>
+  <div class="skill"><span>AI Projects</span><div class="bar"><div class="fill" data="75%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="syllabus reveal">
+  <h2 style="margin-bottom:40px;color:#38bdf8;">Course Syllabus</h2>
+
+  <div class="module">AI Overview & Python Programming</div>
+  <div class="module">Machine Learning Algorithms</div>
+  <div class="module">Deep Learning & Neural Networks</div>
+  <div class="module">NLP & Computer Vision</div>
+  <div class="module">Industry AI Capstone Project</div>
+
+  <a href="brochures/Ai Syllabus copy-1.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 30px;
+     border-radius:30px;font-weight:700;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= OUTCOMES ================= -->
+<section class="outcomes reveal">
+  <div class="outcome">AI Engineer</div>
+  <div class="outcome">Machine Learning Engineer</div>
+  <div class="outcome">Data Scientist</div>
+  <div class="outcome">AI Developer</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Ready to Enter the AI Industry?</h2>
+  <p>Learn by building intelligent systems, not just theory</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+/* SCROLL REVEAL */
+const revealEls = document.querySelectorAll(".reveal");
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>revealObs.observe(el));
+
+/* SKILL BARS */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const obs = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      bar.style.width = bar.getAttribute("data");
+    }
+  },{threshold:0.4});
+  obs.observe(bar);
+});
+
+/* AI NETWORK CANVAS */
+const canvas = document.getElementById("aiCanvas");
+const ctx = canvas.getContext("2d");
+let w,h,nodes=[];
+
+function resize(){
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+for(let i=0;i<80;i++){
+  nodes.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    vx:(Math.random()-0.5)*0.6,
+    vy:(Math.random()-0.5)*0.6
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  nodes.forEach(n=>{
+    n.x+=n.vx; n.y+=n.vy;
+    if(n.x<0||n.x>w) n.vx*=-1;
+    if(n.y<0||n.y>h) n.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
+    ctx.fillStyle="#38bdf8";
+    ctx.fill();
+  });
+
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x;
+      const dy=nodes[i].y-nodes[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){
+        ctx.strokeStyle=`rgba(56,189,248,${1-dist/120})`;
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

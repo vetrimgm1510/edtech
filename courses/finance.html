@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+#financeCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:3.1rem;
+}
+
+.hero h1 span{
+  background:linear-gradient(135deg,#facc15,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:16px;
+  font-size:1.15rem;
+  color:#fde68a;
+}
+
+.hero-btn{
+  margin-top:30px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#facc15,#22c55e);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path{max-width:900px;}
+
+.step{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.step div:first-child{
+  font-size:1.7rem;
+  font-weight:800;
+  color:#facc15;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#facc15,#22c55e);
+  transition:width 1.5s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #facc15;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+
+.module h3{
+  color:#facc15;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#713f12,#020617);
+  border-radius:40px;
+}
+
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#facc15;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="financeCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>Finance</span> Program</h1>
+    <p>Master accounting, financial analysis, investment strategies, and corporate finance used by modern businesses</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 3 Months</div>
+  <div class="card">📊 Financial Analysis</div>
+  <div class="card">💼 Corporate Finance</div>
+  <div class="card">🎯 Career Oriented</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 style="margin-bottom:40px;color:#facc15;">Learning Path</h2>
+
+  <div class="step"><div>01</div><div>Accounting Fundamentals</div></div>
+  <div class="step"><div>02</div><div>Financial Statements & Reporting</div></div>
+  <div class="step"><div>03</div><div>Costing & Budgeting</div></div>
+  <div class="step"><div>04</div><div>Investment & Risk Analysis</div></div>
+  <div class="step"><div>05</div><div>Corporate Finance & Case Studies</div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#facc15;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Accounting & Bookkeeping</span><div class="bar"><div class="fill" data="90%"></div></div></div>
+  <div class="skill"><span>Financial Analysis</span><div class="bar"><div class="fill" data="85%"></div></div></div>
+  <div class="skill"><span>Budgeting & Forecasting</span><div class="bar"><div class="fill" data="80%"></div></div></div>
+  <div class="skill"><span>Investment Analysis</span><div class="bar"><div class="fill" data="75%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#facc15;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Basics of Accounting & Finance</p></div>
+  <div class="module"><h3>Module 2</h3><p>Financial Statements & Analysis</p></div>
+  <div class="module"><h3>Module 3</h3><p>Cost Accounting & Budgeting</p></div>
+  <div class="module"><h3>Module 4</h3><p>Investment & Risk Management</p></div>
+  <div class="module"><h3>Module 5</h3><p>Corporate Finance & Case Studies</p></div>
+
+  <a href="brochures/FINANCE.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">Financial Analyst</div>
+  <div class="role">Accounts Executive</div>
+  <div class="role">Investment Analyst</div>
+  <div class="role">Finance Manager</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Build a Strong Career in Finance</h2>
+  <p>Step into high-demand finance roles with confidence</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      bar.style.width=bar.getAttribute("data");
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* Finance Market Animation */
+const canvas=document.getElementById("financeCanvas");
+const ctx=canvas.getContext("2d");
+let w,h;
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+resize(); window.addEventListener("resize",resize);
+
+let bars=Array.from({length:40},(_,i)=>({
+  x:i*35,
+  h:80+Math.random()*180,
+  speed:Math.random()*0.6+0.3
+}));
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  bars.forEach((b,i)=>{
+    b.h+=Math.sin(Date.now()*0.002+i)*b.speed;
+
+    ctx.fillStyle=b.h>150?"#22c55e":"#facc15";
+    ctx.fillRect(b.x,h-b.h,18,b.h);
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+#marketingCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.hero h1{
+  font-size:3.2rem;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#f97316,#facc15);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  max-width:820px;
+  margin-top:18px;
+  font-size:1.15rem;
+  color:#fde68a;
+}
+.hero-btn{
+  margin-top:32px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#f97316,#facc15);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:.3s;
+}
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path-title{
+  text-align:center;
+  margin-bottom:60px;
+  font-size:2.2rem;
+  color:#f97316;
+}
+.timeline{
+  position:relative;
+  max-width:720px;
+  margin:auto;
+  padding-left:40px;
+}
+.timeline .line{
+  position:absolute;
+  left:18px;
+  top:0;
+  width:4px;
+  height:0;
+  background:linear-gradient(to bottom,#f97316,#facc15);
+  transition:height 1.2s ease;
+}
+.path-step{
+  position:relative;
+  margin-bottom:50px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.path-step.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.path-step span{
+  position:absolute;
+  left:-6px;
+  top:0;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#020617;
+  border:3px solid #f97316;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#f97316;
+}
+.path-step p{
+  margin-left:60px;
+  background:rgba(255,255,255,0.05);
+  padding:18px 22px;
+  border-radius:14px;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#f97316,#facc15);
+  transition:width 1.5s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #f97316;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+.module h3{
+  color:#f97316;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#f59e0b,#020617);
+  border-radius:40px;
+}
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#facc15;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="marketingCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>Marketing</span></h1>
+    <p>Master modern marketing strategies, branding, analytics, and customer growth techniques</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 3–5 Months</div>
+  <div class="card">📈 Growth Strategies</div>
+  <div class="card">🎯 Brand Building</div>
+  <div class="card">🚀 Career Ready</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 class="path-title">Learning Roadmap</h2>
+  <div class="timeline">
+    <div class="line"></div>
+
+    <div class="path-step"><span>01</span><p>Marketing Fundamentals</p></div>
+    <div class="path-step"><span>02</span><p>Consumer Behavior & Branding</p></div>
+    <div class="path-step"><span>03</span><p>Digital & Performance Marketing</p></div>
+    <div class="path-step"><span>04</span><p>Analytics & Growth Hacking</p></div>
+    <div class="path-step"><span>05</span><p>Campaign Strategy & Capstone</p></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#f97316;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Marketing Strategy</span><div class="bar"><div class="fill" data-progress="95%"></div></div></div>
+  <div class="skill"><span>Branding & Communication</span><div class="bar"><div class="fill" data-progress="90%"></div></div></div>
+  <div class="skill"><span>Digital Marketing</span><div class="bar"><div class="fill" data-progress="88%"></div></div></div>
+  <div class="skill"><span>Analytics & Growth</span><div class="bar"><div class="fill" data-progress="80%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#f97316;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Marketing Fundamentals</p></div>
+  <div class="module"><h3>Module 2</h3><p>Brand Strategy & Consumer Psychology</p></div>
+  <div class="module"><h3>Module 3</h3><p>Digital Marketing Channels</p></div>
+  <div class="module"><h3>Module 4</h3><p>Analytics & Growth Metrics</p></div>
+  <div class="module"><h3>Module 5</h3><p>Marketing Campaign Project</p></div>
+
+  <a href="brochures/MARKETING.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">Marketing Executive</div>
+  <div class="role">Brand Manager</div>
+  <div class="role">Growth Marketer</div>
+  <div class="role">Digital Marketing Specialist</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Build Brands That Grow</h2>
+  <p>Turn ideas into impactful marketing campaigns</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"));
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(e=>{
+    if(e[0].isIntersecting){
+      bar.style.width=bar.dataset.progress;
+      o.disconnect();
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* Learning Path Animation */
+const steps=document.querySelectorAll(".path-step");
+const line=document.querySelector(".timeline .line");
+const pathObs=new IntersectionObserver(e=>{
+  if(e[0].isIntersecting){
+    steps.forEach((s,i)=>{
+      setTimeout(()=>{
+        s.classList.add("show");
+        line.style.height=`${(i+1)*90}px`;
+      },i*300);
+    });
+    pathObs.disconnect();
+  }
+},{threshold:0.3});
+pathObs.observe(document.querySelector(".timeline"));
+
+/* Marketing Growth Animation */
+const canvas=document.getElementById("marketingCanvas");
+const ctx=canvas.getContext("2d");
+let w,h;
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+resize();addEventListener("resize",resize);
+
+const bars=[...Array(40)].map((_,i)=>({
+  x:i*40,
+  h:Math.random()*200+50,
+  speed:Math.random()*0.5+0.3
+}));
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  bars.forEach((b,i)=>{
+    b.h+=Math.sin(Date.now()/800+i)*b.speed;
+    ctx.fillStyle="rgba(249,115,22,0.7)";
+    ctx.fillRect(b.x,h-b.h,20,b.h);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

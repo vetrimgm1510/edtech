@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Security | NxtSync</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#020617;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+#cyberCanvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:3.1rem;
+}
+
+.hero h1 span{
+  color:#22c55e;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:16px;
+  font-size:1.15rem;
+  color:#bbf7d0;
+}
+
+.hero-btn{
+  margin-top:30px;
+  padding:16px 46px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.hero-btn:hover{transform:scale(1.05);}
+
+/* ================= SECTION ================= */
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:110px 20px;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= SNAPSHOT ================= */
+.snapshot{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ================= LEARNING PATH ================= */
+.path{max-width:900px;}
+
+.step{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.step div:first-child{
+  font-size:1.7rem;
+  font-weight:800;
+  color:#22c55e;
+}
+
+/* ================= SKILLS ================= */
+.skill{margin-bottom:22px;}
+.skill span{font-weight:600;}
+
+.bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  transition:width 1.5s ease;
+}
+
+/* ================= SYLLABUS ================= */
+.module{
+  border-left:4px solid #22c55e;
+  padding:22px 26px;
+  margin-bottom:22px;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+}
+
+.module h3{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+/* ================= ROLES ================= */
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.role{
+  padding:28px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta{
+  text-align:center;
+  padding:120px 20px;
+  background:radial-gradient(circle at top,#14532d,#020617);
+  border-radius:40px;
+}
+
+.cta a{
+  margin-top:30px;
+  display:inline-block;
+  padding:16px 44px;
+  background:#22c55e;
+  color:black;
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="cyberCanvas"></canvas>
+  <div class="hero-content">
+    <h1><span>Cyber</span> Security Program</h1>
+    <p>Learn how to protect systems, networks, and data from cyber threats using real-world security techniques</p>
+    <a href="#apply" class="hero-btn">Explore Program</a>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot reveal">
+  <div class="card">⏳ Duration: 2–3 Months</div>
+  <div class="card">🛡 Defensive & Offensive</div>
+  <div class="card">🧪 Hands-on Labs</div>
+  <div class="card">🎯 Industry Aligned</div>
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+<section class="path reveal">
+  <h2 style="margin-bottom:40px;color:#22c55e;">Learning Path</h2>
+
+  <div class="step"><div>01</div><div>Cyber Security Fundamentals</div></div>
+  <div class="step"><div>02</div><div>Networking & Protocols</div></div>
+  <div class="step"><div>03</div><div>Threats, Attacks & Vulnerabilities</div></div>
+  <div class="step"><div>04</div><div>Ethical Hacking Basics</div></div>
+  <div class="step"><div>05</div><div>Security Tools & Live Labs</div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:35px;color:#22c55e;">Skills You Will Build</h2>
+
+  <div class="skill"><span>Network Security</span><div class="bar"><div class="fill" data="90%"></div></div></div>
+  <div class="skill"><span>Threat Analysis</span><div class="bar"><div class="fill" data="85%"></div></div></div>
+  <div class="skill"><span>Ethical Hacking</span><div class="bar"><div class="fill" data="80%"></div></div></div>
+  <div class="skill"><span>Security Tools</span><div class="bar"><div class="fill" data="88%"></div></div></div>
+</section>
+
+<!-- ================= SYLLABUS ================= -->
+<section class="reveal">
+  <h2 style="margin-bottom:40px;color:#22c55e;">Course Syllabus</h2>
+
+  <div class="module"><h3>Module 1</h3><p>Introduction to Cyber Security</p></div>
+  <div class="module"><h3>Module 2</h3><p>Networking & Security Protocols</p></div>
+  <div class="module"><h3>Module 3</h3><p>Malware, Attacks & Defense</p></div>
+  <div class="module"><h3>Module 4</h3><p>Ethical Hacking & Pen Testing</p></div>
+  <div class="module"><h3>Module 5</h3><p>Live Security Labs & Case Studies</p></div>
+
+  <a href="brochures/CYBER SECURITY SYLLABUS COPY.pdf" target="_blank"
+     style="display:inline-block;margin-top:30px;
+     background:white;color:black;padding:14px 32px;
+     border-radius:30px;font-weight:800;text-decoration:none;">
+     Download Full Syllabus (PDF)
+  </a>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles reveal">
+  <div class="role">Security Analyst</div>
+  <div class="role">SOC Analyst</div>
+  <div class="role">Ethical Hacker</div>
+  <div class="role">Cyber Security Engineer</div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta reveal" id="apply">
+  <h2>Defend Systems. Stop Attacks. Secure the Future.</h2>
+  <p>Build a career in Cyber Security</p>
+  <a href="../contact/">Apply Now</a>
+</section>
+
+<script>
+/* Scroll Reveal */
+const els=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.15});
+els.forEach(el=>obs.observe(el));
+
+/* Skill Bars */
+document.querySelectorAll(".fill").forEach(bar=>{
+  const o=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      bar.style.width=bar.getAttribute("data");
+    }
+  },{threshold:0.4});
+  o.observe(bar);
+});
+
+/* Cyber Security Canvas */
+const canvas=document.getElementById("cyberCanvas");
+const ctx=canvas.getContext("2d");
+let w,h,nodes=[];
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+resize(); window.addEventListener("resize",resize);
+
+for(let i=0;i<80;i++){
+  nodes.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    vx:(Math.random()-0.5)*0.4,
+    vy:(Math.random()-0.5)*0.4,
+    threat:Math.random()<0.15
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  nodes.forEach(n=>{
+    n.x+=n.vx; n.y+=n.vy;
+    if(n.x<0||n.x>w) n.vx*=-1;
+    if(n.y<0||n.y>h) n.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
+    ctx.fillStyle=n.threat ? "#ef4444" : "#22c55e";
+    ctx.fill();
+  });
+
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x;
+      const dy=nodes[i].y-nodes[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){
+        ctx.strokeStyle="rgba(34,197,94,0.25)";
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

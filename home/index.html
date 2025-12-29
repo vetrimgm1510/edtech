@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NxtSync - Courses & Internships</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body data-theme="dark">
+
+ <iframe id="bg" src="bg.html"></iframe>
+
+
+
+
+  <!-- Get Started Modal -->
+<div id="getStartedModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+<h2 id="modalTitle">Get Started</h2>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+      ✅ You have successfully submitted the form.  
+      Our team will connect with you shortly.
+    </div>
+
+    <form id="getStartedForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="program">Program Interested</label>
+      <select id="program" name="program" required>
+        <option value="">-- Select Program --</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Mobile Development">Mobile Development</option>
+        <option value="AI & ML">AI & Machine Learning</option>
+        <option value="Cloud Computing">Cloud Computing</option>
+        <option value="UI/UX">UI/UX Design</option>
+        <option value="Data Science">Data Science</option>
+      </select>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+  <a href="../index.html">
+    <img src="logo.jpeg" alt="NxtSync Logo">
+  </a>
+</div>
+
+       <button class="nav-toggle" aria-label="Toggle navigation">
+    <span class="hamburger"></span>
+  </button>
+      <ul class="nav-links">
+
+<li class="dropdown">
+  <div class="dropdown-header">
+    <a href="/courses">Programs</a>
+    <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
+  </div>
+  <ul class="dropdown-menu">
+    <li><a href="/courses/more/webdev.html">Web Development</a></li>
+    <li><a href="/courses/more/AI.html">AI & ML</a></li>
+    <li><a href="/courses/more/cc.html">Cloud Computing</a></li>
+    <li><a href="/courses/more/uiux.html">UI/UX Design</a></li>
+    <li><a href="/courses/">View More</a></li>
+  </ul>
+</li>
+
+
+
+      <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+
+     <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
+    
+     
+<li class="nav-get-started" >
+      <a href="javascript:void(0)" class="btn-get-started">Get Started</a>
+    </li>
+
+
+
+    </ul>
+
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>NxtSync</h1>
+      <p>Synchronizing innovation with your vision</p>
+      <p>Unlock your potential with premium courses and exclusive internship opportunities. Join thousands of students building their future with NxtSync.</p>
+      <div class="cta-buttons">
+        <a href="/courses" class="btn btn-primary">Explore Courses</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="hero-image.jpg" alt="Hero Image" style="width: 100%; height: auto; border-radius: 10px;">
+      <div class="animated-text">
+        <span class="word we">We</span>
+        <span class="word shape">Shape</span>
+        <span class="word your">Your</span>
+        <span class="word future">Future</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+<section class="section stats-section">
+  <div class="stats fade-in">
+    <div class="stat-item">
+      <div class="stat-number">10k+</div>
+      <div class="stat-label">Students Enrolled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">99+</div>
+      <div class="stat-label">Premium Courses</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">Success Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Internship Placements</div>
+    </div>
+  </div>
+</section>
+<!-- Courses Section --> 
+<section class="section fade-in" id="courses">
+  <h2 class="section-title">Premium Courses</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <img src="courses/web1.jpeg" alt="Web Development" class="card-img">
+      <h3>Web Development</h3>
+      <p>Master modern web technologies including React, Node.js, and cloud deployment. Build real-world projects and get job-ready skills.</p>
+    </div>
+    <div class="card">
+      <img src="courses/da2.jpeg" alt="Data Analytics" class="card-img">
+      <h3>Data Analytics</h3>
+      <p>Master Data Analytics with Excel, SQL, Python, Power BI, and Tableau. Learn to collect, clean, analyze, and visualize data for data-driven decisions.</p>
+    </div>
+    <div class="card">
+      <img src="courses/aiml1.jpeg" alt="AI & Machine Learning" class="card-img">
+      <h3>AI/ML</h3>
+<p>Learn AI fundamentals and ChatGPT integration. Master machine learning basics, prompt engineering, APIs, and automation. Includes hands-on projects and certification.</p>     
+    </div>
+    <div class="card">
+      <img src="courses/dm.jpeg" alt="Cloud Computing" class="card-img">
+      <h3>Digital Marketing</h3>
+      <p>Learn digital marketing basics like SEO, SEM, social media, Google Ads, and analytics. Gain hands-on experience with live projects and tools.</p>
+    </div>
+    <div class="card">
+      <img src="courses/hr.jpeg" alt="UI/UX Design" class="card-img">
+      <h3>Human Resouces</h3>
+      <p>Learn HR fundamentals including recruitment, payroll, labor laws, and performance evaluation. Gain practical skills for effective workforce management and career growth.</p>
+    </div>
+    <div class="card">
+      <img src="courses/ds.jpeg" alt="Data Science" class="card-img">
+      <h3>Data Science</h3>
+      <p>Master data science with Python, statistics, machine learning, and data visualization. Gain hands-on experience using Pandas, NumPy, and real-world projects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Internships Section -->
+<section class="section fade-in" id="internships">
+  <h2 class="section-title">Exclusive Internships</h2>
+  <div class="internship-grid">
+    
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="techstartups.jpeg" alt="Tech Startups">
+      </div>
+      <h3>Tech Startups</h3>
+      <p>Work with innovative startups and gain hands-on experience in cutting-edge technologies. Fast-paced learning environment.</p>
+    </div>
+
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="mnc.jpeg" alt="Fortune 500 Companies">
+      </div>
+      <h3>Fortune 500 Companies</h3>
+      <p>Internship opportunities with top-tier companies. Build your network and gain industry insights from the best.</p>
+    </div>
+
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="remote.jpeg" alt="Remote Opportunities">
+      </div>
+      <h3>Remote Opportunities</h3>
+      <p>Work remotely with global companies and develop cross-cultural collaboration skills in a digital-first world.</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Advertisement Scrolling Bar -->
+<section  class="section fade-in" id="ads">
+  <h2 class="section-title">Our Partners</h2>
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <img src="companies\accenture.png" alt="Ad 1">
+      <img src="companies\coforge.png" alt="Ad 2">
+      <img src="companies\HCL.png" alt="Ad 3">
+      <img src="companies\ibm.png" alt="Ad 4">
+      <img src="companies\infosys.png" alt="Ad 5">
+      <img src="companies\lnt.png" alt="Ad 1">
+      <img src="companies\mphasis.png" alt="Ad 2">
+      <img src="companies\tcs.png" alt="Ad 3">
+      <img src="companies\tm.png" alt="Ad 4">
+      <img src="companies/wipro.png" alt="Ad 5">
+<!-- Duplicate Set for seamless loop -->
+      <img src="companies\accenture.png" alt="Ad 1">
+      <img src="companies\coforge.png" alt="Ad 2">
+      <img src="companies\HCL.png" alt="Ad 3">
+      <img src="companies\ibm.png" alt="Ad 4">
+      <img src="companies\infosys.png" alt="Ad 5">
+      <img src="companies\lnt.png" alt="Ad 1">
+      <img src="companies\mphasis.png" alt="Ad 2">
+      <img src="companies\tcs.png" alt="Ad 3">
+      <img src="companies\tm.png" alt="Ad 4">
+      <img src="companies/wipro.png" alt="Ad 5">
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Advanced Programs Section -->
+<section class="section fade-in" id="advanced-programs">
+  <h2 class="section-title">Advanced Programs</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/web1.jpeg" alt="Full Stack Web Development" class="card-img">
+      <h3>Full Stack Web Development</h3>
+      <p>Advanced full-stack development with MERN stack, microservices, and cloud deployment. Build scalable applications with modern architectures.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/aiml1.jpeg" alt="AI & Machine Learning Advanced" class="card-img">
+      <h3>AI & Machine Learning Advanced</h3>
+      <p>Deep dive into advanced AI concepts including deep learning, neural networks, computer vision, and NLP. Hands-on projects with TensorFlow and PyTorch.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/ds.jpeg" alt="Data Science Advanced" class="card-img">
+      <h3>Data Science Advanced</h3>
+      <p>Advanced data science with big data technologies, advanced ML algorithms, and real-time analytics. Master tools like Spark, Kafka, and advanced visualization.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/dm.jpeg" alt="Cloud Computing Advanced" class="card-img">
+      <h3>Cloud Computing Advanced</h3>
+      <p>Master advanced cloud architectures, serverless computing, Kubernetes, and multi-cloud strategies. Gain expertise in AWS, Azure, and GCP.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/hr.jpeg" alt="DevOps Engineering" class="card-img">
+      <h3>DevOps Engineering</h3>
+      <p>Advanced DevOps practices including CI/CD pipelines, infrastructure as code, monitoring, and security. Master tools like Jenkins, Docker, and Terraform.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+    <div class="card">
+      <div class="badge">Advanced</div>
+      <img src="courses/da2.jpeg" alt="Cybersecurity Advanced" class="card-img">
+      <h3>Cybersecurity Advanced</h3>
+      <p>Advanced cybersecurity concepts including ethical hacking, penetration testing, threat analysis, and security architecture. Industry-recognized certifications.</p>
+      <a href="#" class="btn-view">View Details</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Contact Section -->
+  <section  class="section fade-in" id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="cards-grid">
+    <!-- Request Demo Card -->
+    <div class="card contact-card cc">
+      <h3 style="color: black;">Request Demo</h3>
+      <div class="demo-icon"></div>
+      <p>Get a personalized demo of our courses and see how we can help accelerate your career.</p>
+      <a href="javascript:void(0)" id="openDemo" class="card-button">Request Demo</a>
+    </div>
+
+      
+      <div class="card contact-card"><h3 style="color: black;">Call Us</h3><div class="call-visualization"><div class="sound-bar"></div><div class="sound-bar"></div><div class="sound-bar"></div><div class="phone-icon"></div></div><p>Have questions? Speak directly with our education consultants for personalized guidance.</p><a href="tel:+916302655033" class="card-button"> +91 6302655033 </a></div>
+      <div class="card contact-card"><h3 style="color: black;">Email Us</h3><div class="chat-container"><div class="chat-bubble bot"></div><p>Send us your queries and we'll get back to you within 24 hours with detailed answers.</p><a href="mailto:support@nxtsync.in" class="card-button">✉️ support@nxtsync.in </a></div>
+    </div>
+  </section>
+
+
+<!-- Demo Modal -->
+<div id="demoModal" class="demo-modal">
+  <div class="demo-modal-content">
+    <span class="demo-close" id="closeDemo">&times;</span>
+    <h2>Book a Free Demo</h2>
+    <form id="demoForm">
+      <div class="demo-input"><input type="text" name="name" placeholder="Your Name" required></div>
+      <div class="demo-input"><input type="tel" name="phone" placeholder="Phone Number" required></div>
+      <div class="demo-input"><input type="email" name="email" placeholder="Email Address" required></div>
+      <div class="demo-input"><input type="text" name="location" placeholder="Location" required></div>
+      <div class="demo-input"><input type="date" name="date" required></div>
+      <div class="demo-input">
+        <select name="course" required>
+          <option value="">-- Select Course --</option>
+          <option>Python Full Stack</option>
+          <option>Django Development</option>
+          <option>Data Science</option>
+          <option>Machine Learning</option>
+          <option>Cloud & DevOps</option>
+        </select>
+      </div>
+      <div class="demo-input"><textarea name="message" rows="3" placeholder="Message"></textarea></div>
+      <button type="submit">Book Demo</button>
+    </form>
+  </div>
+</div>
+
+<!-- Thank You Popup -->
+<div id="demoThankYou">
+  <div class="demo-popup-content">Thank you! Your demo is booked.</div>
+</div>
+
+
+
+
+
+
+
+
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-section">
+          <div class="brand-logo"><img src="logo.jpeg" alt="NxtSync Logo"></div>
+          <p class="brand-description">Empowering the next generation with cutting-edge courses and exclusive internship opportunities. Building careers, one student at a time.</p>
+<div style="display:flex; flex-direction:column; gap:0.8rem; align-items:flex-start;">      
+      <a href="policy.html" style="color:#fcfbfb; text-decoration:none; font-size:0.95rem;">Privacy Policy</a>
+      <a href="terms.html" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem;">Terms & Conditions</a>
+      <a href="intern_t&c.html" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem;">Internship Terms & Conditions</a>
+    </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info"><div class="contact-item">📍 1st floor, Divya diamonds building, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033</div><div class="contact-item">📞 +91 6302655033</div><div class="contact-item">✉️ support@nxtsync.in</div></div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+  <a href="https://www.instagram.com/nxt_sync" class="social-link" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com/company/nxtsync" class="social-link" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+</div>
+      </div>
+     
+    </div>
+  </footer>
+  <div class="footer-bottom">
+  <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
+  <div class="tagline">Building Tomorrow's Leaders Today</div>
+</div>
+  <!-- External JS -->
+  <script src="script.js"></script>
+  
+</body>
+</html>

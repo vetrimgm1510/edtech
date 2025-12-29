@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NxtSync - Courses & Internships</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css">
+
+<style>
+  :root{
+  --bg:#070b1a;
+  --card:rgba(255,255,255,0.08);
+  --glass:rgba(255,255,255,0.12);
+  --accent:#ffd166;
+  --accent2:#fb8b24;
+  --white:#ffffff;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            /* background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%); */
+              background:
+    radial-gradient(circle at top right,#1b2a6b,transparent 40%),
+    radial-gradient(circle at bottom left,#111a40,transparent 45%),
+    var(--bg);
+            min-height: 100vh;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #1a1a1a;
+            margin-bottom: 3rem;
+        }
+
+        /* Flow Section */
+        .flow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            height: 15vh;
+        }
+
+        .flow-box {
+            padding: 1rem 2rem;
+            border: 2px solid #eaac00;
+            border-radius: 30px;
+            background: white;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .flow-box.purple {
+            background: #eaac00;
+            color: white;
+        }
+
+        .arrow {
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(to right, #10b981, #eaac00);
+            position: relative;
+        }
+
+        .arrow::before {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-left: 18px solid #eaac00;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .arrow-dot {
+            width: 12px;
+            height: 12px;
+            background: #34d399;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Phone Mockup */
+        .phone-container {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 350px;
+            background: rgb(241, 241, 242);
+            border-radius: 40px;
+            padding: 1rem;
+            box-shadow: 0 20px 60px rgba(68, 52, 84, 0.2);
+            margin: 0 auto;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .phone-time {
+            font-weight: 600;
+        }
+
+        .phone-status {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .phone-tabs {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+        }
+
+        .phone-tab {
+            color: #999;
+            font-weight: 500;
+        }
+
+        .phone-tab.active {
+            color: #2196f3;
+            border-bottom: 2px solid #2196f3;
+        }
+
+      .chat-list {
+  padding: 1rem;
+  height: 50vh;              /* ✅ fixed height */
+  overflow: hidden;          /* hide overflowing messages */
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+  
+}
+
+        .chat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: #4b7f9b;
+            border-radius: 10px;
+            
+            margin-bottom: 0.8rem;
+            opacity: 0;
+            transform: scale(0.8) translateY(30px);
+            animation: popInBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes popInBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+@keyframes slideUpInside {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.chat-list::before,
+.chat-list::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  z-index: 2;
+}
+
+.chat-list::before {
+  top: 0;
+  background: linear-gradient(to bottom, white, transparent);
+}
+/* 
+.chat-list::after {
+  bottom: 0;
+  background: linear-gradient(to top, white, transparent);
+} */
+
+.chat-item {
+  animation: slideUpInside 0.6s ease forwards;
+}
+/* 
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        } */
+
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.322), transparent);
+            animation: shimmer 5.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .avatar-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .avatar-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .avatar-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .avatar-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .avatar-5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .avatar-6 { background: linear-gradient(135deg, #30cfd0, #330867); }
+
+        .chat-content {
+            flex: 1;
+        }
+
+        .chat-text {
+            font-size: 0.9rem;
+            color: #e9e3e3;
+            margin-bottom: 0.3rem;
+        }
+
+        .chat-time {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .chat-indicator {
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+            margin-left: auto;
+            flex-shrink: 0;
+            margin-top: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(360deg, #10b981, #eaac00);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow {
+                width: 200px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flow-container {
+                flex-direction: column;
+            }
+
+            .arrow {
+                width: 2px;
+                height: 50px;
+                transform: rotate(90deg);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        /* ================= WHY NXTSYNC GRAPH ================= */
+.why-graph-section {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.why-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: orange;
+}
+
+.why-subtitle {
+  color: #c7c7d1;
+  margin: 12px 0 60px;
+  font-style: italic;
+}
+
+/* Graph layout */
+.graph-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  /* margin-left: 350px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.graph-row {
+  display: grid;
+  grid-template-columns: 1.4fr 3fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.graph-label {
+  color:orange;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Bars */
+.graph-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  height: 130px;
+}
+
+.bar {
+  width: 110px;
+  height: 0;
+  border-radius: 14px 14px 6px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  color: #fff;
+  transition: height 1.4s ease;
+}
+
+/* Traditional bar */
+.bar.traditional {
+  background: linear-gradient(135deg, #ef4444, #991b1b);
+  opacity: 0.55;
+}
+
+/* NxtSync bar */
+.bar.nxtsync {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 15px 45px rgba(34,197,94,0.45);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .why-title {
+    font-size: 1.8rem;
+  }
+
+  .graph-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .graph-label {
+    text-align: center;
+  }
+
+  .graph-bars {
+    justify-content: center;
+    height: 110px;
+  }
+
+  .bar {
+    width: 90px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .graph-bars {
+    height: 95px;
+    gap: 14px;
+  }
+
+  .bar {
+    width: 70px;
+    border-radius: 12px 12px 4px 4px;
+  }
+}
+
+/* ================= CONTACT SLIDER ================= */
+.contact-slider {
+  padding: 120px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+.slider-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: orange;
+  margin-bottom: 50px;
+}
+
+/* Tabs */
+.slider-tabs {
+  display: inline-flex;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 6px;
+  margin-bottom: 60px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, orange, #a855f7);
+}
+
+/* Content */
+.slider-content {
+  position: relative;
+  min-height: 220px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide h3 {
+  font-size: 1.6rem;
+  color: orange;
+  margin-bottom: 10px;
+}
+
+.slide p {
+  color: #c7c7d1;
+  margin-bottom: 20px;
+}
+
+.slide button,
+.slide a {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, orange, #a855f7);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .slider-title {
+    font-size: 2rem;
+  }
+
+  .tab {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+</style>
+
+  <!-- Google Sign-In SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // Callback function for Google Sign-In
+    function handleCredentialResponse(response) {
+      // response.credential is the JWT token
+      console.log('Google Sign-In successful, token:', response.credential);
+      
+      // Decode JWT to get user info (without verification - for demo only)
+      const base64Url = response.credential.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      
+      const userInfo = JSON.parse(jsonPayload);
+      
+      // Show success message
+      document.getElementById("modalTitle").textContent = "Login Successful";
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("successMessage").textContent = `✅ Welcome, ${userInfo.name}!`;
+      document.getElementById("successMessage").style.display = "block";
+      
+      console.log('User info:', userInfo);
+      
+      // Close modal after 2 seconds
+      setTimeout(() => {
+        document.getElementById('loginModal').style.display = 'none';
+      }, 2000);
+    }
+
+    // Initialize Google Sign-In when page loads
+    window.addEventListener('load', function () {
+      if (typeof google !== 'undefined') {
+        google.accounts.id.initialize({
+          client_id: 'YOUR_GOOGLE_CLIENT_ID_HERE', // Replace with your actual Client ID
+          callback: handleCredentialResponse
+        });
+      }
+    });
+  </script>
+</head>
+
+
+
+<body data-theme="dark">
+
+ <!-- <iframe id="bg" src="bg.html"></iframe> -->
+
+
+
+
+  <!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+<h2 id="modalTitle">Login</h2>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+      ✅ Login successful! Welcome back.
+    </div>
+
+    <!-- Google Login Button -->
+    <button class="google-login-btn" onclick="loginWithGoogle()">
+      <i class="fab fa-google"></i> Login with Google
+    </button>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" name="remember"> Remember me
+        </label>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <p class="signup-link">Don't have an account? <a href="#" onclick="openSignupModal()">Sign up</a></p>
+  </div>
+</div>
+
+
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+  <a href="index.html">
+    <img src="logo.png" alt="NxtSync Logo">
+  </a>
+</div>
+
+       <button class="nav-toggle" aria-label="Toggle navigation">
+    <span class="hamburger"></span>
+  </button>
+      <ul class="nav-links">
+
+<li class="dropdown">
+  <div class="dropdown-header">
+    <a href="/courses">Programs</a>
+    <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
+  </div>
+  <ul class="dropdown-menu">
+    <li><a href="/courses/more/webdev.html">Web Development</a></li>
+    <li><a href="/courses/more/AI.html">AI & ML</a></li>
+    <li><a href="/courses/more/cc.html">Cloud Computing</a></li>
+    <li><a href="/courses/more/uiux.html">UI/UX Design</a></li>
+    <li><a href="/courses/">View More</a></li>
+  </ul>
+</li>
+
+
+
+      <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      <li><a href="refer.html">Refer &amp; Earn</a></li>
+
+     <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
+    
+     
+<li class="nav-login" >
+      <a href="javascript:void(0)" class="btn-login">Login</a>
+    </li>
+
+
+
+    </ul>
+
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <canvas id="aiCanvas"></canvas>
+    <div class="hero-overlay">
+      <div class="hero-content hero-content-1">
+        <h1>Build Skills That Shape Your Future</h1>
+        <p>Synchronizing innovation with your vision.</p>
+        <p>Access premium courses, hands-on training, and exclusive internship opportunities designed to accelerate your career.</p>
+        <div class="cta-buttons">
+          <a href="/courses" class="btn btn-primary">Explore Courses</a>
+
+        </div>
+      </div>
+      <div class="hero-content hero-content-2">
+        <h1>Master the Art of Learning</h1>
+        <p>Unlock your potential with expert-led courses.</p>
+        <p>From web development to AI, gain the skills employers are looking for in today's competitive market.</p>
+        <div class="cta-buttons">
+          <a href="/courses" class="btn btn-primary">Explore Courses</a>
+
+        </div>
+      </div>
+      <div class="hero-content hero-content-3">
+        <h1>Code Your Way to Success</h1>
+        <p>Hands-on coding experience awaits.</p>
+        <p>Join thousands of students who have transformed their careers through our comprehensive programming courses.</p>
+        <div class="cta-buttons">
+          <a href="/courses" class="btn btn-primary">Explore Courses</a>
+
+        </div>
+      </div>
+      <div class="hero-content hero-content-4">
+        <h1>Innovate with Technology</h1>
+        <p>Stay ahead in the digital age.</p>
+        <p>Learn cutting-edge technologies and prepare for the future of work with our industry-relevant curriculum.</p>
+        <div class="cta-buttons">
+          <a href="/courses" class="btn btn-primary">Explore Courses</a>
+
+        </div>
+      </div>
+      <div class="hero-content hero-content-5">
+        <h1>Educate. Empower. Excel.</h1>
+        <p>Your journey to excellence starts here.</p>
+        <p>Discover personalized learning paths, expert mentorship, and real-world projects to build your portfolio.</p>
+        <div class="cta-buttons">
+          <a href="/courses" class="btn btn-primary">Explore Courses</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+<!-- Courses Section -->
+<!-- <section class="section fade-in" id="courses">
+  <h2 class="section-title">Premium Courses</h2>
+  <div class="courses-container">
+    <div class="courses-left">
+      <h3>All Courses</h3>
+      <ul class="course-list">
+        <li>Web Development</li>
+        <li>Data Analytics</li>
+        <li>AI/ML</li>
+        <li>Digital Marketing</li>
+        <li>Human Resources</li>
+        <li>Data Science</li>
+      </ul>
+      <a href="/courses" class="btn btn-primary explore-btn">Explore Courses</a>
+    </div>
+    <div class="courses-right">
+      <div class="cards-grid">
+        <a href="/courses/more/webdev.html" class="card-link">
+          <div class="card">
+            <img src="courses/web1.jpeg" alt="Web Development" class="card-img">
+            <h3>Web Development</h3>
+            <p>Master modern web technologies including React, Node.js, and cloud deployment. Build real-world projects and get job-ready skills.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+        <a href="/courses/" class="card-link">
+          <div class="card">
+            <img src="courses/da2.jpeg" alt="Data Analytics" class="card-img">
+            <h3>Data Analytics</h3>
+            <p>Master Data Analytics with Excel, SQL, Python, Power BI, and Tableau. Learn to collect, clean, analyze, and visualize data for data-driven decisions.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+        <a href="/courses/more/AI.html" class="card-link">
+          <div class="card">
+            <img src="courses/aiml1.jpeg" alt="AI & Machine Learning" class="card-img">
+            <h3>AI/ML</h3>
+<p>Learn AI fundamentals and ChatGPT integration. Master machine learning basics, prompt engineering, APIs, and automation. Includes hands-on projects and certification.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+        <a href="/courses/" class="card-link">
+          <div class="card">
+            <img src="courses/dm.jpeg" alt="Cloud Computing" class="card-img">
+            <h3>Digital Marketing</h3>
+            <p>Learn digital marketing basics like SEO, SEM, social media, Google Ads, and analytics. Gain hands-on experience with live projects and tools.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+        <a href="/courses/" class="card-link">
+          <div class="card">
+            <img src="courses/hr.jpeg" alt="UI/UX Design" class="card-img">
+            <h3>Human Resouces</h3>
+            <p>Learn HR fundamentals including recruitment, payroll, labor laws, and performance evaluation. Gain practical skills for effective workforce management and career growth.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+        <a href="/courses/" class="card-link">
+          <div class="card">
+            <img src="courses/ds.jpeg" alt="Data Science" class="card-img">
+            <h3>Data Science</h3>
+            <p>Master data science with Python, statistics, machine learning, and data visualization. Gain hands-on experience using Pandas, NumPy, and real-world projects.</p>
+            <span class="view-more-text">View More</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+  <!-- Stats Section -->
+<section class="section stats-section">
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-number">10k+</div>
+      <div class="stat-label">Students Enrolled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">99+</div>
+      <div class="stat-label">Premium Courses</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">Success Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Internship Placements</div>
+    </div>
+  </div>
+</section>
+  <!-- Advertisement Scrolling Bar -->
+<section  class="section fade-in" id="ads">
+  <h2 class="section-title">Our Partners</h2>
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <img src="companies\accenture.png" alt="Ad 1">
+      <img src="companies\coforge.png" alt="Ad 2">
+      <img src="companies\HCL.png" alt="Ad 3">
+      <img src="companies\ibm.png" alt="Ad 4">
+      <img src="companies\infosys.png" alt="Ad 5"> 
+      <img src="companies\lnt.png" alt="Ad 1">
+      <img src="companies\mphasis.png" alt="Ad 2">
+      <img src="companies\tcs.png" alt="Ad 3">
+      <img src="companies\tm.png" alt="Ad 4">
+      <img src="companies/wipro.png" alt="Ad 5">
+<!-- Duplicate Set for seamless loop -->
+      <img src="companies\accenture.png" alt="Ad 1">
+      <img src="companies\coforge.png" alt="Ad 2">
+      <img src="companies\HCL.png" alt="Ad 3">
+      <img src="companies\ibm.png" alt="Ad 4">
+      <img src="companies\infosys.png" alt="Ad 5">
+      <img src="companies\lnt.png" alt="Ad 1">
+      <img src="companies\mphasis.png" alt="Ad 2">
+      <img src="companies\tcs.png" alt="Ad 3">
+      <img src="companies\tm.png" alt="Ad 4">
+      <img src="companies/wipro.png" alt="Ad 5">
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Internships Section -->
+<section class="section fade-in" id="internships">
+  <h2 class="section-title">Exclusive Internships</h2>
+  <div class="internship-grid">
+    
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="techstartups.jpeg" alt="Tech Startups">
+      </div>
+      <h3>Tech Startups</h3>
+      <p>Work with innovative startups and gain hands-on experience in cutting-edge technologies. Fast-paced learning environment.</p>
+    </div>
+
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="mnc.jpeg" alt="Fortune 500 Companies">
+      </div>
+      <h3>Fortune 500 Companies</h3>
+      <p>Internship opportunities with top-tier companies. Build your network and gain industry insights from the best.</p>
+    </div>
+
+    <div class="internship-card">
+      <div class="internship-image">
+        <img src="remote.jpeg" alt="Remote Opportunities">
+      </div>
+      <h3>Remote Opportunities</h3>
+      <p>Work remotely with global companies and develop cross-cultural collaboration skills in a digital-first world.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="dna-section" id="skill-dna">
+  <h2 class="dna-title">Skill DNA Scanner</h2>
+  <p class="dna-subtitle">We decode your potential and build industry-ready skills</p>
+
+  <div class="dna-container">
+    <!-- Scanner -->
+    <div class="dna-scanner">
+      <div class="scan-line"></div>
+      <div class="dna-helix"></div>
+    </div>
+
+    <!-- Skills -->
+    <div class="dna-skills">
+      <div class="dna-skill" data-level="90">
+        <span>Frontend Mastery</span>
+        <div class="dna-bar"><div class="dna-fill"></div></div>
+      </div>
+
+      <div class="dna-skill" data-level="85">
+        <span>Backend Engineering</span>
+        <div class="dna-bar"><div class="dna-fill"></div></div>
+      </div>
+
+      <div class="dna-skill" data-level="80">
+        <span>AI & Logical Thinking</span>
+        <div class="dna-bar"><div class="dna-fill"></div></div>
+      </div>
+
+      <div class="dna-skill" data-level="88">
+        <span>Industry Projects</span>
+        <div class="dna-bar"><div class="dna-fill"></div></div>
+      </div>
+
+      <div class="dna-skill" data-level="75">
+        <span>Communication & Confidence</span>
+        <div class="dna-bar"><div class="dna-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="why-graph-section" id="why-nxtsync">
+  <h2 class="why-title">Why Students Choose NxtSync</h2>
+  <p class="why-subtitle">Because careers are built with experience, not theory</p>
+
+  <div class="graph-wrapper">
+
+    <div class="graph-row">
+      <span class="graph-label">Industry-Aligned Curriculum</span>
+      <div class="graph-bars">
+        <div class="bar traditional" data-value="40">Traditional</div>
+        <div class="bar nxtsync" data-value="95">NxtSync</div>
+      </div>
+    </div>
+
+    <div class="graph-row">
+      <span class="graph-label">Mentor-Led Learning</span>
+      <div class="graph-bars">
+        <div class="bar traditional" data-value="35">Traditional</div>
+        <div class="bar nxtsync" data-value="92">NxtSync</div>
+      </div>
+    </div>
+
+    <div class="graph-row">
+      <span class="graph-label">Hands-On Projects</span>
+      <div class="graph-bars">
+        <div class="bar traditional" data-value="30">Traditional</div>
+        <div class="bar nxtsync" data-value="94">NxtSync</div>
+      </div>
+    </div>
+
+    <div class="graph-row">
+      <span class="graph-label">Internship Exposure</span>
+      <div class="graph-bars">
+        <div class="bar traditional" data-value="25">Traditional</div>
+        <div class="bar nxtsync" data-value="90">NxtSync</div>
+      </div>
+    </div>
+
+    <div class="graph-row">
+      <span class="graph-label">Placement Support</span>
+      <div class="graph-bars">
+        <div class="bar traditional" data-value="45">Traditional</div>
+        <div class="bar nxtsync" data-value="93">NxtSync</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="reality-section" id="career-reality">
+  <h2 class="reality-title">Career Reality Check</h2>
+  <p class="reality-subtitle">
+    The difference between staying stuck and moving ahead
+  </p>
+
+  <div class="reality-container">
+    
+    <!-- WITHOUT -->
+    <div class="reality-card without">
+      <h3 style="color: orange;">Without Industry Skills</h3>
+      <ul>
+        <li>❌ Resume rejected repeatedly</li>
+        <li>❌ Fear of interviews</li>
+        <li>❌ No real project experience</li>
+        <li>❌ Low confidence & clarity</li>
+        <li>❌ Stuck in low-paying roles</li>
+      </ul>
+    </div>
+
+    <!-- WITH -->
+    <div class="reality-card with">
+      <h3 style="color: orange;">With NxtSync</h3>
+      <ul>
+        <li>✅ Shortlisted resumes</li>
+        <li>✅ Interview-ready confidence</li>
+        <li>✅ Real-world project exposure</li>
+        <li>✅ Clear career roadmap</li>
+        <li>✅ Growth-oriented roles</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Advanced Programs Section -->
+<section class="section fade-in" id="advanced-programs">
+  <h2 class="section-title">Advanced Programs</h2>
+  <div class="advanced-programs-section">
+    <!-- Card 1: Full Stack Web Development -->
+    <div class="program-container">
+      <div class="left-section">
+        <div class="header">
+          <div class="logos">💻</div>
+          <h1>Full Stack Web Development</h1>
+        </div>
+
+        <div class="trending-badge">
+          🔥 Trending
+        </div>
+
+        <p class="description">
+          Advanced full-stack development with MERN stack, microservices, and cloud deployment. Build scalable applications with modern architectures.
+        </p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-icon">📅</span>
+            <span>6 Months</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">👥</span>
+            <span>2,500+ Students</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span>4.9/5 Rating</span>
+          </div>
+        </div>
+
+        <p class="certification-title">Certifications Included :</p>
+
+        <div class="certification-logos">
+          <div class="cert-box">
+            <div class="iso-logo">ISO</div>
+            <div>Certified</div>
+          </div>
+          <div class="cert-box">
+            <div class="aicte-logo">AICTE</div>
+            <div>Approved</div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-outline">
+           <a href="courses/brochures/FULL STACK WEB DEVELOPMENT.pdf" download style="text-decoration: none;"> 📥 Download Brochure</a>
+          </button>
+          <a href="courses/full-stack-web-development.html" class="btn btn-outline">
+            👁️ View Details
+          </a>
+          <button class="btn btn-solid">
+            Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="person-image">
+          <div class="person-placeholder">
+            <div class="person-silhouette">
+              <div class="laptop"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-1">
+          <div class="metric">
+            <div class="metric-label">Enrolled Students</div>
+            <div class="metric-value">2.5 K <span class="metric-change">+124 (5%)</span></div>
+          </div>
+          <div class="chart"></div>
+        </div>
+
+        <div class="stats-card stats-card-2">
+          <div class="metric">
+            <div class="metric-label">Completion Rate</div>
+            <div class="metric-value">95%</div>
+          </div>
+          <div class="mini-chart">
+            <div class="bar" style="height: 60%;"></div>
+            <div class="bar" style="height: 40%;"></div>
+            <div class="bar" style="height: 70%;"></div>
+            <div class="bar" style="height: 50%;"></div>
+            <div class="bar" style="height: 80%;"></div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-3">
+          <div class="metric">
+            <div class="metric-label">Job Placement</div>
+            <div class="metric-value">Success</div>
+            <div style="margin-top: 10px; font-size: 24px; font-weight: 700; color: #7c3aed;">89%</div>
+          </div>
+          <div class="chart" style="background: linear-gradient(to right, #10b981, #34d399);"></div>
+        </div>
+
+        <div class="stats-card stats-card-4">
+          <div class="metric">
+            <div class="metric-label">Course Progress</div>
+            <div style="margin-top: 10px; width: 80px; height: 80px; border: 8px solid #10b981; border-radius: 50%; border-top-color: transparent; transform: rotate(45deg);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: AI & Machine Learning Advanced -->
+    <div class="program-container">
+      <div class="left-section">
+        <div class="header">
+          <div class="logos">🤖</div>
+          <h1>AI & Machine Learning Advanced</h1>
+        </div>
+
+        <div class="trending-badge">
+          🔥 Trending
+        </div>
+
+        <p class="description">
+          Deep dive into advanced AI concepts including deep learning, neural networks, computer vision, and NLP. Hands-on projects with TensorFlow and PyTorch.
+        </p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-icon">📅</span>
+            <span>8 Months</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">👥</span>
+            <span>1,800+ Students</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span>4.8/5 Rating</span>
+          </div>
+        </div>
+
+        <p class="certification-title">Certifications Included :</p>
+
+        <div class="certification-logos">
+          <div class="cert-box">
+            <div class="iso-logo">ISO</div>
+            <div>Certified</div>
+          </div>
+          <div class="cert-box">
+            <div class="aicte-logo">AICTE</div>
+            <div>Approved</div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-outline">
+            <a href="courses/brochures/Ai Syllabus copy-1.pdf" download style="text-decoration: none;">📥 Download Brochure</a>
+          </button>
+               <a href="courses/artificial-intelligence.html" class="btn btn-outline">
+            👁️ View Details
+          </a>
+          <button class="btn btn-solid">
+            Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="person-image">
+          <div class="person-placeholder">
+            <div class="person-silhouette">
+              <div class="laptop"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-1">
+          <div class="metric">
+            <div class="metric-label">Enrolled Students</div>
+            <div class="metric-value">1.8 K <span class="metric-change">+98 (6%)</span></div>
+          </div>
+          <div class="chart"></div>
+        </div>
+
+        <div class="stats-card stats-card-2">
+          <div class="metric">
+            <div class="metric-label">Project Completion</div>
+            <div class="metric-value">92%</div>
+          </div>
+          <div class="mini-chart">
+            <div class="bar" style="height: 65%;"></div>
+            <div class="bar" style="height: 45%;"></div>
+            <div class="bar" style="height: 75%;"></div>
+            <div class="bar" style="height: 55%;"></div>
+            <div class="bar" style="height: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-3">
+          <div class="metric">
+            <div class="metric-label">Industry Demand</div>
+            <div class="metric-value">Growth</div>
+            <div style="margin-top: 10px; font-size: 24px; font-weight: 700; color: #7c3aed;">94%</div>
+          </div>
+          <div class="chart" style="background: linear-gradient(to right, #10b981, #34d399);"></div>
+        </div>
+
+        <div class="stats-card stats-card-4">
+          <div class="metric">
+            <div class="metric-label">Learning Path</div>
+            <div style="margin-top: 10px; width: 80px; height: 80px; border: 8px solid #10b981; border-radius: 50%; border-top-color: transparent; transform: rotate(45deg);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Cloud Computing & DevOps -->
+    <div class="program-container">
+      <div class="left-section">
+        <div class="header">
+          <div class="logos">☁️</div>
+          <h1>Cloud Computing</h1>
+        </div>
+
+        <div class="trending-badge">
+          🔥 Trending
+        </div>
+
+        <p class="description">
+          Master cloud platforms (AWS, Azure, GCP) and DevOps practices including CI/CD, containerization with Docker, Kubernetes orchestration, and infrastructure as code.
+        </p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-icon">📅</span>
+            <span>7 Months</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">👥</span>
+            <span>2,200+ Students</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⭐</span>
+            <span>4.7/5 Rating</span>
+          </div>
+        </div>
+
+        <p class="certification-title">Certifications Included :</p>
+
+        <div class="certification-logos">
+          <div class="cert-box">
+            <div class="iso-logo">ISO</div>
+            <div>Certified</div>
+          </div>
+          <div class="cert-box">
+            <div class="aicte-logo">AICTE</div>
+            <div>Approved</div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-outline">
+           <a href="courses/brochures/AWS SYLLABUS COPY.pdf" download style="text-decoration: none;"> 📥 Download Brochure</a>
+          </button>
+               <a href="courses/aws-cloud-computing.html" class="btn btn-outline">
+            👁️ View Details
+          </a>
+          <button class="btn btn-solid">
+            Enroll Now
+          </button>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="person-image">
+          <div class="person-placeholder">
+            <div class="person-silhouette">
+              <div class="laptop"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-1">
+          <div class="metric">
+            <div class="metric-label">Enrolled Students</div>
+            <div class="metric-value">2.2 K <span class="metric-change">+115 (5%)</span></div>
+          </div>
+          <div class="chart"></div>
+        </div>
+
+        <div class="stats-card stats-card-2">
+          <div class="metric">
+            <div class="metric-label">Cloud Deployment</div>
+            <div class="metric-value">97%</div>
+          </div>
+          <div class="mini-chart">
+            <div class="bar" style="height: 70%;"></div>
+            <div class="bar" style="height: 50%;"></div>
+            <div class="bar" style="height: 80%;"></div>
+            <div class="bar" style="height: 60%;"></div>
+            <div class="bar" style="height: 90%;"></div>
+          </div>
+        </div>
+
+        <div class="stats-card stats-card-3">
+          <div class="metric">
+            <div class="metric-label">Career Growth</div>
+            <div class="metric-value">Potential</div>
+            <div style="margin-top: 10px; font-size: 24px; font-weight: 700; color: #7c3aed;">91%</div>
+          </div>
+          <div class="chart" style="background: linear-gradient(to right, #10b981, #34d399);"></div>
+        </div>
+
+        <div class="stats-card stats-card-4">
+          <div class="metric">
+            <div class="metric-label">Skill Development</div>
+            <div style="margin-top: 10px; width: 80px; height: 80px; border: 8px solid #10b981; border-radius: 50%; border-top-color: transparent; transform: rotate(45deg);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section fade-in" id="why-choose-us">
+  <h2 class="section-title">Why Choose Us</h2>
+
+  <div class="flow-container">
+    <div class="flow-box">LEARNING CHALLENGES</div>
+    <div class="arrow">
+      <div class="arrow-dot"></div>
+    </div>
+    <div class="flow-box purple">HOW WE ENCOUNTER</div>
+  </div>
+
+  <div class="content-grid">
+    <div class="phone-container">
+      <div class="phone-mockup">
+        <div class="phone-header">
+          <div class="phone-time">9:41</div>
+          <div class="phone-status">📶 📱 🔋</div>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab active">Broadcast Lists</div>
+          <div class="phone-tab">New Group</div>
+        </div>
+        <div class="chat-list" id="chatList">
+          <!-- Chats will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎥</div>
+        <div class="feature-text">LIVE Interactive<br>Session</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <div class="feature-text">Industry ratified<br>certifications</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍🏫</div>
+        <div class="feature-text">Expert Industry<br>Mentor</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <div class="feature-text">Portfolio worthy<br>projects</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <div class="feature-text">Dedicated query<br>session</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <div class="feature-text">Active<br>Community</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+<section class="contact-slider" id="contact">
+  <h2 class="slider-title">How Do You Want to Connect?</h2>
+
+  <div class="slider-tabs">
+    <button class="tab active" data-tab="demo">Demo</button>
+    <button class="tab" data-tab="call">Call</button>
+    <button class="tab" data-tab="email">Email</button>
+  </div>
+
+  <div class="slider-content">
+
+    <div class="slide active" id="demo">
+      <h3>Experience NxtSync Live</h3>
+      <p>See our teaching style, projects, and mentor interaction in action.</p>
+      <button id="openDemo">Book Free Demo</button>
+    </div>
+
+    <div class="slide" id="call">
+      <h3>Talk to a Career Advisor</h3>
+      <p>Get clarity on courses, career paths, and placement support.</p>
+      <a href="tel:+916302655033">Call Now</a>
+    </div>
+
+    <div class="slide" id="email">
+      <h3>Ask Us Anything</h3>
+      <p>We usually reply within 24 hours.</p>
+      <a href="mailto:support@nxtsync.in">Send Email</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Demo Modal -->
+<div id="demoModal" class="demo-modal">
+  <div class="demo-modal-content">
+    <span class="demo-close" id="closeDemo">&times;</span>
+    <h2>Book a Free Demo</h2>
+    <form id="demoForm">
+      <div class="demo-input"><input type="text" name="name" placeholder="Your Name" required></div>
+      <div class="demo-input"><input type="tel" name="phone" placeholder="Phone Number" required></div>
+      <div class="demo-input"><input type="email" name="email" placeholder="Email Address" required></div>
+      <div class="demo-input"><input type="text" name="location" placeholder="Location" required></div>
+      <div class="demo-input"><input type="date" name="date" required></div>
+      <div class="demo-input">
+        <select name="course" required>
+          <option value="">-- Select Course --</option>
+          <option>Python Full Stack</option>
+          <option>Django Development</option>
+          <option>Data Science</option>
+          <option>Machine Learning</option>
+          <option>Cloud & DevOps</option>
+        </select>
+      </div>
+      <div class="demo-input"><textarea name="message" rows="3" placeholder="Message"></textarea></div>
+      <button type="submit">Book Demo</button>
+    </form>
+  </div>
+</div>
+
+<!-- Thank You Popup -->
+<div id="demoThankYou">
+  <div class="demo-popup-content">Thank you! Your demo is booked.</div>
+</div>
+
+
+
+
+
+
+
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-section">
+          <div class="brand-logo"><img src="logo.png" alt="NxtSync Logo"></div>
+          <p class="brand-description">Empowering the next generation with cutting-edge courses and exclusive internship opportunities. Building careers, one student at a time.</p>
+<div style="display:flex; flex-direction:column; gap:0.8rem; align-items:flex-start;">      
+      <a href="pdf/privacypolicy.pdf" target="_blank" style="color:#fcfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Privacy Policy</a>
+      <a href="pdf/Termsandconditions.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Terms & Conditions</a>
+      <a href="pdf/termsandconditions-interns.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Internship Terms & Conditions</a>
+    </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info"><div class="contact-item"><a href="https://maps.app.goo.gl/wj1dTCTgNmoQgTGu9" style="text-decoration: none; color: white;" >📍 1st floor, Divya diamonds building, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033</a></div><div class="contact-item"><a href="tel:+916302655033"  style="text-decoration: none; color: white;">+916302655033</a></div><div class="contact-item"><a href="mailto:support@nxtsync.in" style="color: white; text-decoration: none;">✉️ support@nxtsync.in</a></div></div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+  <a href="https://www.instagram.com/nxt_sync" class="social-link" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com/company/nxtsync" class="social-link" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+</div>
+      </div>
+     
+    </div>
+  </footer>
+  <div class="footer-bottom">
+  <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
+  <div class="tagline">Building Tomorrow's Leaders Today</div>
+</div>
+  <!-- External JS -->
+   <script>
+const dnaSection = document.getElementById("skill-dna");
+const dnaSkills = document.querySelectorAll(".dna-skill");
+
+const dnaObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      dnaSkills.forEach((skill, index) => {
+        const level = skill.dataset.level;
+        setTimeout(() => {
+          skill.style.opacity = 1;
+          skill.style.transform = "translateY(0)";
+          skill.querySelector(".dna-fill").style.width = level + "%";
+        }, index * 200);
+      });
+      dnaObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+dnaObserver.observe(dnaSection);
+const whySection = document.getElementById("why-nxtsync");
+const bars = document.querySelectorAll(".bar");
+
+/* Reset bars initially */
+bars.forEach(bar => {
+  bar.style.height = "0";
+});
+
+const riseObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+      // 🔼 Animate bars up
+      bars.forEach((bar, index) => {
+        const value = bar.dataset.value;
+        setTimeout(() => {
+          bar.style.height = value + "%";
+        }, index * 120);
+      });
+    } else {
+      // 🔽 Reset bars when leaving view
+      bars.forEach(bar => {
+        bar.style.height = "0";
+      });
+    }
+
+  });
+}, {
+  threshold: 0.35
+});
+
+riseObserver.observe(whySection);
+const tabs = document.querySelectorAll(".tab");
+const slides = document.querySelectorAll(".slide");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    slides.forEach(s => s.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  });
+});
+
+</script>
+
+
+
+
+  <script src="script.js"></script>
+
+  <!-- AI Network Canvas Animation -->
+  <script>
+    /* AI NETWORK CANVAS */
+    const canvas = document.getElementById("aiCanvas");
+    const ctx = canvas.getContext("2d");
+    let w,h,nodes=[];
+
+    function resize(){
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize",resize);
+    resize();
+
+    for(let i=0;i<80;i++){
+      nodes.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        vx:(Math.random()-0.5)*0.6,
+        vy:(Math.random()-0.5)*0.6
+      });
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,w,h);
+
+      nodes.forEach(n=>{
+        n.x+=n.vx; n.y+=n.vy;
+        if(n.x<0||n.x>w) n.vx*=-1;
+        if(n.y<0||n.y>h) n.vy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,2,0,Math.PI*2);
+        ctx.fillStyle="#38bdf8";
+        ctx.fill();
+      });
+
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const dx=nodes[i].x-nodes[j].x;
+          const dy=nodes[i].y-nodes[j].y;
+          const dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<120){
+            ctx.strokeStyle=`rgba(56,189,248,${1-dist/120})`;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x,nodes[i].y);
+            ctx.lineTo(nodes[j].x,nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+</html>

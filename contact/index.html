@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | NxtSync</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  :root{
+  --bg:#070b1a;
+  --card:rgba(255,255,255,0.08);
+  --glass:rgba(255,255,255,0.12);
+  --accent:#ffd166;
+  --accent2:#fb8b24;
+  --white:#ffffff;
+}
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{
+   background:
+    radial-gradient(circle at top right,#1b2a6b,transparent 40%),
+    radial-gradient(circle at bottom left,#111a40,transparent 45%),
+    var(--bg);
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+
+/* ================= UTIL ================= */
+.container{max-width:1200px;margin:auto;padding:0 20px}
+.animate{opacity:0;transform:translateY(50px);transition:1s ease}
+.animate.show{opacity:1;transform:none}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:-20%;
+  background:radial-gradient(circle,#6366f1,transparent 70%);
+  filter:blur(120px);
+  animation:floatGlow 16s infinite alternate;
+}
+.hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  font-weight:900;
+}
+.hero p{
+  max-width:700px;
+  margin:20px auto 0;
+  font-size:1.15rem;
+  color:rgba(255,255,255,0.85);
+}
+
+/* ================= CONTACT GRID ================= */
+.contact-section{padding:100px 0}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:50px;
+}
+
+/* ================= INFO CARD ================= */
+.info-card{
+  background:linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03));
+  backdrop-filter:blur(16px);
+  border-radius:28px;
+  height: 85vh;
+  padding:45px;
+  box-shadow:0 40px 120px rgba(0,0,0,0.5);
+}
+.info-card h3{font-size:1.8rem;margin-bottom:15px}
+.info-item{display:flex;gap:15px;margin-top:18px}
+.info-item i{color:orange;font-size:20px;margin-top:3px}
+.info-item p{ color: rgba(255,255,255,0.85);line-height:1.6}
+
+/* ================= MAP ================= */
+.map{margin-top:30px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.15)}
+
+/* ================= FORM ================= */
+.form-card{
+  background:#fff;
+  color:#000;
+  border-radius:28px;
+  height: 70vh;
+  padding:5px;
+  box-shadow:0 40px 120px rgba(0,0,0,0.4);
+}
+.form-card h3{text-align:center;font-size:2rem;margin-bottom:25px}
+.form-card label{font-weight:600;font-size:0.9rem}
+.form-card input,.form-card textarea{
+  width:100%;
+  padding:8px;
+  margin:10px 0 20px;
+  border-radius:14px;
+  border:1px solid #ddd;
+}
+.form-card textarea{height:50px;resize:none}
+.form-card button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:white;
+  font-weight:700;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.35s;
+}
+.form-card button:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(99,102,241,.6)}
+.form-message{text-align:center;margin-top:15px;font-weight:600}
+
+/* ================= WHY CONTACT ================= */
+.why {
+  padding: 100px 0;
+  
+}
+
+.why-title {
+  text-align: center;
+  margin-bottom: 50px;
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* Carousel wrapper */
+.why-carousel {
+  position: relative;
+  max-width: 420px;
+  margin: auto;
+  height: 420px;
+}
+
+/* Card */
+.why-card {
+  position: absolute;
+  inset: 0;
+  
+  color: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+  text-align: center;
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 0.8s ease;
+}
+
+/* Active card */
+.why-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* Exit animation */
+.why-card.exit {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+/* Badge */
+.step-badge {
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background: orange;
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* Image */
+.why-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 20px;
+}
+
+/* ================= PROCESS ================= */
+/* ================= PROCESS SINGLE CARD ================= */
+.process {
+  padding: 100px 0;
+ 
+}
+
+.process-title {
+  text-align: center;
+  margin-bottom: 50px;
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* Carousel wrapper */
+.process-carousel {
+  position: relative;
+  max-width: 420px;
+  margin: auto;
+  height: 420px;
+}
+.why-card,
+.process-card{
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.04)
+  );
+  backdrop-filter: blur(16px);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Card */
+.process-card {
+  position: absolute;
+  inset: 0;
+ 
+  color: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+  text-align: center;
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 0.8s ease;
+}
+
+/* Active card */
+.process-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* Exit animation */
+.process-card.exit {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+/* Badge */
+.step-badge {
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background: orange;
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* Image */
+.process-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 20px;
+}
+.why,
+.process,
+.faq{
+  background: transparent;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .process-carousel {
+    max-width: 100%;
+    height: 380px;
+  }
+
+  .process-title {
+    font-size: 2rem;
+  }
+
+  .why-carousel {
+    max-width: 100%;
+    height: 380px;
+  }
+
+  .why-title {
+    font-size: 2rem;
+  }
+}
+
+/* ================= FAQ ================= */
+.faq{padding:100px 0;}
+.faq-item{
+  background-color: white;
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:15px;
+  cursor:pointer;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+.faq-item p{display:none;color:black;margin-top:10px}
+
+/* ================= CTA ================= */
+.cta{
+  padding:120px 0;
+  text-align:center;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+}
+.cta h2{font-size:3rem}
+.cta a{
+  display:inline-block;
+  margin-top:25px;
+  padding:16px 45px;
+  background:#fff;
+  color:#6366f1;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes floatGlow{
+  from{transform:translateY(0)}
+  to{transform:translateY(-60px)}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr}
+}
+
+.hero-future {
+  position: relative;
+  min-height: 100vh;
+  background: url("contact.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+/* Dark + glow overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+ background:
+    radial-gradient(circle at center, rgba(251,139,36,0.25), transparent 60%),
+    linear-gradient(to bottom, rgba(7,11,26,0.65), rgba(7,11,26,0.95));
+  z-index: 1;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-content h1 {
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-weight: 800;
+  background: linear-gradient(180deg, 
+#f9b248,#7cc23b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  /* text-shadow: 0 0 10px rgba(177, 140, 7, 0.5), 0 0 10px rgba(195, 104, 7, 0.3), 0 0 30px rgba(56, 149, 178, 0.2); */
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+   background: linear-gradient(180deg, 
+#f9b248, 
+#7cc23b);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  font-weight: 900;
+}
+
+/* Button */
+.hero-btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 40px;
+    background: linear-gradient(180deg, 
+#f9b248, 
+#7cc23b);
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(124,58,237,0.6);
+}
+
+/* Floating Tags */
+.hero-tags {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-tags img {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 25px;
+  object-fit: contain;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Tag positions */
+.hero-tags img:nth-child(1) { top: 20%; left: 8%; animation-delay: 0s; }
+.hero-tags img:nth-child(2) { top: 30%; right: 7%; animation-delay: 1s; }
+.hero-tags img:nth-child(3) { bottom: 5%; left: 15%; animation-delay: 2s; }
+.hero-tags img:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 3s; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-tags img {
+    width: 80px;
+    height: 80px;
+  }
+  .hero-tags img:nth-child(1) { top:10%; left: 10%; animation-delay: 0s; }
+.hero-tags img:nth-child(2) { top: 15%; right: 12%; animation-delay: 1s; }
+.hero-tags img:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 2s; }
+.hero-tags img:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 3s; }
+}
+/* ================= MOBILE FIRST FIX ================= */
+
+/* -------- SMALL DEVICES (≤480px) -------- */
+@media (max-width: 480px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  /* HERO */
+  .hero-future {
+    min-height: 100vh;
+    padding: 60px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .hero-btn {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+  }
+
+  /* Floating images */
+  .hero-tags img {
+    width: 60px;
+    height: 60px;
+    opacity: 0.85;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .contact-grid {
+    gap: 30px;
+  }
+
+  .info-card,
+  .form-card {
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  .info-card h3,
+  .form-card h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Map full width */
+  .map iframe {
+    width: 100%;
+    height: 220px;
+  }
+
+  /* WHY */
+  .why {
+    padding: 70px 0;
+  }
+
+  .why-card {
+    padding: 25px;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 70px 0;
+  }
+
+  .step {
+    padding: 25px;
+  }
+
+  /* FAQ */
+  .faq {
+    padding: 70px 0;
+  }
+
+  .faq-item {
+    padding: 18px;
+    font-size: 0.95rem;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 70px 20px;
+  }
+
+  .cta h2 {
+    font-size: 2rem;
+  }
+
+  .cta a {
+    padding: 14px 30px;
+    font-size: 0.95rem;
+  }
+}
+
+/* -------- MEDIUM DEVICES (≤768px) -------- */
+@media (max-width: 768px) {
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.05rem;
+  }
+
+  .hero-tags img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------- TABLETS (≤1024px) -------- */
+@media (max-width: 1024px) {
+
+  .container {
+    padding: 0 25px;
+  }
+
+  .contact-grid {
+    gap: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-tags img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* -------- ULTRA SMALL (≤360px) -------- */
+@media (max-width: 360px) {
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+}
+/* ================= UNIVERSAL RESPONSIVE FIX ================= */
+
+/* Prevent overflow issues */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fluid images */
+img, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* HERO FIX */
+.hero-future {
+  padding: clamp(60px, 10vw, 120px) 16px;
+  min-height: 100svh; /* fixes mobile chrome URL bar issue */
+}
+
+.hero-content {
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+}
+
+.hero-content p {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+}
+
+/* Floating tags scale */
+.hero-tags img {
+  width: clamp(75px, 18vw, 225px);
+  height: clamp(75px, 18vw, 225px);
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: clamp(50px, 10vw, 100px) 0;
+}
+
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Cards */
+.info-card,
+.form-card {
+  padding: clamp(20px, 5vw, 45px);
+}
+
+/* MAP */
+.map iframe {
+  width: 100%;
+  height: clamp(220px, 35vw, 300px);
+}
+
+/* WHY + PROCESS CAROUSEL */
+.why-carousel,
+.process-carousel {
+  width: 100%;
+  max-width: 420px;
+  height: clamp(360px, 80vw, 420px);
+}
+
+/* Cards inside carousel */
+.why-card,
+.process-card {
+  padding: clamp(20px, 4vw, 30px);
+}
+
+/* Carousel images */
+.why-card img,
+.process-card img {
+  height: clamp(160px, 40vw, 220px);
+}
+
+/* FAQ */
+.faq {
+  padding: clamp(60px, 10vw, 100px) 15px;
+}
+
+.faq-item {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+}
+
+/* CTA */
+.cta {
+  padding: clamp(60px, 10vw, 120px) 20px;
+}
+
+.cta h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+
+/* BUTTON TOUCH TARGET FIX */
+button, a.hero-btn {
+  min-height: 48px;
+}
+
+/* ULTRA SMALL DEVICES (≤320px) */
+@media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .step-badge {
+    font-size: 0.75rem;
+  }
+}
+nav {
+      position: fixed;
+      top: 0;
+      width: 90%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: #010e3a;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
+      transition: all 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: whitesmoke;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      font-size: 1.05rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: block;
+      overflow: hidden;
+    }
+
+    /* Get Started Button in Navbar */
+    .btn-login {
+      background: rgb(44, 214, 44);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(129, 133, 130, 0.4);
+    }
+
+    /* Dropdown wrapper */
+    .nav-links .dropdown {
+      position: relative;
+    }
+
+    /* Dropdown menu (hidden by default) */
+    .nav-links .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #faf9f9;
+      padding: 10px 0;
+      min-width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    /* Show on hover */
+    .nav-links .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Dropdown items */
+    .nav-links .dropdown-menu li {
+      list-style: none;
+    }
+
+    .nav-links .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #121212;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links .dropdown-menu a:hover {
+      background: #9eedc9;
+    }
+
+    /* Align Courses + caret inline */
+    .dropdown-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-header a {
+      text-decoration: none;
+      color: whitesmoke;
+      font-weight: 500;
+    }
+
+    /* Caret beside text */
+    .dropdown-toggle {
+      font-size: 14px;
+      cursor: pointer;
+      color: whitesmoke;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown.open .dropdown-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Hamburger button styling */
+    .nav-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      padding: 0;
+      box-sizing: border-box;
+      display: none;
+    }
+
+    .nav-toggle:focus {
+      outline: none;
+    }
+
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: whitesmoke;
+      border-radius: 3px;
+      transition: all 0.3s linear;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      position: absolute;
+    }
+
+    .hamburger::before {
+      top: -10px;
+    }
+
+    .hamburger::after {
+      top: 10px;
+    }
+
+    .nav-toggle.open .hamburger {
+      background-color: transparent;
+    }
+
+    .nav-toggle.open .hamburger::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .nav-toggle.open .hamburger::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    /* Hide nav links by default on mobile */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 90%;
+        background:black;
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 1001;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+      }
+
+      .nav-links a:hover {
+        background: var(--accent-hover);
+        color: white;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* Show nav-links normally on desktops */
+    @media (min-width: 901px) {
+      .nav-toggle {
+        display: none;
+      }
+      .nav-links {
+        display: flex !important;
+        position: static;
+        background: none;
+        box-shadow: none;
+        width: auto;
+      }
+    }
+
+    .nav-get-started {
+      margin: 1rem 20px;
+    }
+
+    .nav-get-started .btn-login {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (min-width: 901px) {
+      .nav-get-started {
+        margin: 0;
+      }
+      .nav-get-started .btn-login {
+        width: auto;
+        padding: 10px 20px;
+      }
+    }
+    .footer {
+  width: 90%;
+  margin: auto;
+  background-color: #010e3a;
+  color: orange;
+  padding: 60px 30px;
+   border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand-logo img {
+  height: 50px;
+}
+
+.brand-description {
+  color: rgba(250, 247, 247, 0.7);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: orange;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: rgba(253, 250, 250, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.contact-item {
+  color: rgba(246, 244, 244, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* Responsive styling for tablets and mobiles */
+@media (max-width: 900px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .brand-description {
+    font-size: 13px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 13px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+
+  .brand-description {
+    font-size: 12px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .footer-links a,
+  .contact-item {
+    font-size: 12px;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+.footer-bottom {
+  padding: 14px 20px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto 0;
+
+  background-color: #010e3a;
+
+  border-radius: 50px;
+}
+
+.footer-bottom div {
+  margin: 6px 0;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+/* Tagline text */
+.tagline {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+  .footer-bottom {
+    width: 95%;
+    padding: 12px 15px;
+    border-radius: 30px;
+  }
+
+  .tagline {
+    font-size: 14px;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+  .footer-bottom {
+    width: 100%;
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+   <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="../logo.png" alt="NxtSync Logo">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <div class="dropdown-header">
+            <a href="../courses/">Programs</a>
+            <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="../courses/more/webdev.html">Web Development</a></li>
+            <li><a href="../courses/more/AI.html">AI & ML</a></li>
+            <li><a href="../courses/more/cc.html">Cloud Computing</a></li>
+            <li><a href="../courses/more/uiux.html">UI/UX Design</a></li>
+            <li><a href="../courses/">View More</a></li>
+          </ul>
+        </li>
+        <li><a href="../about/">About Us</a></li>
+        <li><a href="../contact/">Contact Us</a></li>
+        <li><a href="../refer.html">Refer & Earn</a></li>
+        <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
+        <li class="nav-login">
+          <a href="javascript:void(0)" class="btn-login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- HERO -->
+<section class="hero-future">
+  <div class="hero-overlay"></div>
+
+  <!-- Floating tags -->
+  <!-- <div class="hero-tags">
+    <img src="program.png" alt="Programs">
+    <img src="internship.png" alt="Internships">
+    <img src="hiring.png" alt="Hiring">
+    <img src="partnership.png" alt="Partnerships">
+  </div> -->
+
+  <div class="hero-content">
+    <h1>Let’s Build Your Future</h1>
+    <p>
+      Talk to our experts about programs, <br> internships, hiring, or strategic partnerships.
+    </p>
+    <a href="#contact" class="hero-btn">Talk to Experts</a>
+  </div>
+</section>
+
+<section class="contact-section animate">
+  <div class="container contact-grid">
+
+    <div class="info-card">
+      <h3>Reach Us</h3>
+      <div class="info-item"><i class="fa fa-location-dot"></i><p> <a href="https://maps.app.goo.gl/wj1dTCTgNmoQgTGu9" style="text-decoration: none;color: white;" >Madhapur, Hyderabad – 500033</a></p></div>
+      <div class="info-item"><i class="fa fa-envelope"></i><a href="mailto:support@nxtsync.in" style="text-decoration: none; color: white;">support@nxtsync.in</a></div>
+      <div class="info-item"><i class="fa fa-phone"></i><p><a href="tel:+916302655033"  style="text-decoration: none; color: white;">+916302655033</a></p></div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.496685489282!2d78.3918388749486!3d17.435925683459615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91ffd8151f93%3A0xb8810f6062a2dab5!2sNxtsync%20PvtLtd!5e0!3m2!1sen!2sin!4v1766050886387!5m2!1sen!2sin" width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>Send Us a Message</h3>
+      <form id="contactForm">
+        <label>Name</label><input id="name" required>
+        <label>Email</label><input id="email" required>
+        <label>Phone</label><input id="phone" required>
+        <label>Message</label><textarea id="message" required></textarea>
+        <button>Submit</button>
+      </form>
+      <div id="formMessage" class="form-message"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why animate">
+  <div class="container">
+    <h2 class="why-title">Why Contact NxtSync?</h2>
+
+    <div class="why-carousel">
+
+      <div class="why-card active">
+        <span class="step-badge">01</span>
+        <h4>Student Guidance</h4>
+        <p>Career clarity & roadmap</p>
+        <img src="internship.png" alt="Student Guidance">
+      </div>
+
+      <div class="why-card">
+        <span class="step-badge">02</span>
+        <h4>Hiring Support</h4>
+        <p>Access skilled talent</p>
+        <img src="hiring.png" alt="Hiring Support">
+      </div>
+
+      <div class="why-card">
+        <span class="step-badge">03</span>
+        <h4>Partnerships</h4>
+        <p>Collaborate with us</p>
+        <img src="partnership.png" alt="Partnerships">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section class="process animate">
+  <div class="container">
+    <h2 class="process-title">What Happens Next?</h2>
+
+    <div class="process-carousel">
+
+      <div class="process-card active">
+        <span class="step-badge">01</span>
+        <h4>Submit Requirements</h4>
+        <p>You share your requirements with us.</p>
+        <img src="requirements.png" alt="Requirements">
+      </div>
+
+      <div class="process-card">
+        <span class="step-badge">02</span>
+        <h4>Connect with Experts</h4>
+        <p>Our expert connects and understands your needs.</p>
+        <img src="connecting.png" alt="Connecting">
+      </div>
+
+      <div class="process-card">
+        <span class="step-badge">03</span>
+        <h4>Take Action</h4>
+        <p>We take action and deliver results.</p>
+        <img src="action.png" alt="Action">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq animate">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:40px;">FAQs</h2>
+    <div class="faq-item animate"><strong>Do you provide internships?</strong><p>Yes, guaranteed internships with partners.</p></div>
+    <div class="faq-item animate"><strong>Is placement assistance available?</strong><p>Yes, career & placement support.</p></div>
+    <div class="faq-item animate"><strong>What services do you offer?</strong><p>We offer student guidance, hiring support, training programs, and strategic partnerships.</p></div>
+    <div class="faq-item animate"><strong>How can I get in touch?</strong><p>You can contact us via email, phone, or by filling out the form on this page.</p></div>
+    <div class="faq-item animate"><strong>Do you offer training programs?</strong><p>Yes, we provide comprehensive training programs for students and professionals.</p></div>
+    <div class="faq-item animate"><strong>What industries do you work with?</strong><p>We work with various industries including tech, finance, healthcare, and more.</p></div>
+    <div class="faq-item animate"><strong>How long does it take to get a response?</strong><p>We typically respond within 24 hours during business days.</p></div>
+    <div class="faq-item animate"><strong>Are your services paid or free?</strong><p>We offer both free consultations and paid premium services depending on your needs.</p></div>
+    <div class="faq-item animate"><strong>Do you provide career counseling?</strong><p>Yes, personalized career counseling and roadmap planning are part of our student guidance services.</p></div>
+  </div>
+</section>
+
+ <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="brand-section">
+          <div class="brand-logo"><img src="../logo.png" alt="NxtSync Logo"></div>
+          <p class="brand-description">Empowering the next generation with cutting-edge courses and exclusive internship opportunities. Building careers, one student at a time.</p>
+<div style="display:flex; flex-direction:column; gap:0.8rem; align-items:flex-start;">      
+      <a href="/pdf/privacypolicy.pdf" target="_blank" style="color:#fcfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Privacy Policy</a>
+      <a href="/pdf/Termsandconditions.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Terms & Conditions</a>
+      <a href="/pdf/termsandconditions-interns.pdf" target="_blank" style="color:#fdfbfb; text-decoration:none; font-size:0.95rem; cursor:pointer;">Internship Terms & Conditions</a>
+    </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <div class="contact-info"><div class="contact-item"><a href="https://maps.app.goo.gl/wj1dTCTgNmoQgTGu9" style="text-decoration: none; color: white;" >📍 1st floor, Divya diamonds building, Kavuri Hills Rd, CBI Colony, Madhapur, Hyderabad, Telangana 500033</a></div><div class="contact-item"><a href="tel:+916302655033"  style="text-decoration: none; color: white;">+916302655033</a></div><div class="contact-item"><a href="mailto:support@nxtsync.in" style="color: white; text-decoration: none;">✉️ support@nxtsync.in</a></div></div>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+  <a href="https://www.instagram.com/nxt_sync" class="social-link" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com/company/nxtsync" class="social-link" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+</div>
+      </div>
+     
+    </div>
+  </footer>
+  <div class="footer-bottom">
+  <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
+  <div class="tagline">Building Tomorrow's Leaders Today</div>
+</div>
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  /* Hamburger toggle */
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  /* Dropdown toggle on mobile */
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggle.closest('.dropdown').classList.toggle('open');
+    });
+  });
+
+  /* Close menu when link clicked */
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+/* Scroll animations */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add('show'))
+},{threshold:.15});
+document.querySelectorAll('.animate').forEach(el=>obs.observe(el));
+
+/* FAQ toggle */
+document.querySelectorAll('.faq-item').forEach(i=>{
+  i.onclick=()=>i.querySelector('p').style.display=
+    i.querySelector('p').style.display==='block'?'none':'block';
+});
+
+/* Form */
+contactForm.onsubmit=e=>{
+  e.preventDefault();
+  fetch("https://script.google.com/macros/s/AKfycbwKVZ24dMlHu0rjzCc82mZy46KjH_dN_sCrY28J_EGo_Nv4AU7UOMLtsNVhri3UaKis/exec",
+  {method:"POST",mode:"no-cors",body:JSON.stringify({
+    name:name.value,email:email.value,phone:phone.value,message:message.value
+  })});
+  formMessage.innerText="✅ Thank you! We'll contact you soon.";
+  formMessage.style.color="green";
+  contactForm.reset();
+};
+</script>
+<script>
+const cards = document.querySelectorAll('.process-card');
+let current = 0;
+
+setInterval(() => {
+  cards[current].classList.remove('active');
+  cards[current].classList.add('exit');
+
+  current = (current + 1) % cards.length;
+
+  setTimeout(() => {
+    cards.forEach(card => card.classList.remove('exit'));
+    cards[current].classList.add('active');
+  }, 300);
+
+}, 3000);
+</script>
+<script>
+const whyCards = document.querySelectorAll('.why-card');
+let whyCurrent = 0;
+
+setInterval(() => {
+  whyCards[whyCurrent].classList.remove('active');
+  whyCards[whyCurrent].classList.add('exit');
+
+  whyCurrent = (whyCurrent + 1) % whyCards.length;
+
+  setTimeout(() => {
+    whyCards.forEach(card => card.classList.remove('exit'));
+    whyCards[whyCurrent].classList.add('active');
+  }, 300);
+
+}, 3000);
+</script>
+<script>
+/* Staggered FAQ animation */
+const faqObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const faqItems = entry.target.querySelectorAll('.faq-item');
+      faqItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('show');
+        }, index * 200); // 200ms delay between each item
+      });
+      faqObserver.unobserve(entry.target); // Stop observing after animation
+    }
+  });
+}, { threshold: 0.1 });
+
+faqObserver.observe(document.querySelector('.faq'));
+</script>
+
+
+</body>
+</html>
