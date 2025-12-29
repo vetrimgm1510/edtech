@@ -459,9 +459,19 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+ 
+}
+.hero-content {
   opacity: 0;
   animation: contentFade 25s infinite;
 }
+
+/* FIRST HERO: visible immediately */
+.hero-content-1 {
+  opacity: 1;
+  animation-delay: 0s;
+}
+
 
 .hero-content-1 { animation-delay: 0s; }
 .hero-content-2 { animation-delay: 5s; }
@@ -470,9 +480,10 @@ nav {
 .hero-content-5 { animation-delay: 20s; }
 
 @keyframes contentFade {
-  0%, 19% { opacity: 0; }
-  20%, 39% { opacity: 1; }
-  40%, 100% { opacity: 0; }
+  0%   { opacity: 1; }
+  15%  { opacity: 1; }
+  25%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 .hero h1 {
