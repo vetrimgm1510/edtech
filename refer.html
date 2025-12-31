@@ -192,18 +192,15 @@ h1 span{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.65);
-  display:flex;
+  display:none;
   align-items:center;
   justify-content:center;
   z-index:999;
-  visibility:hidden;
-  opacity:0;
   transition:.2s;
 }
 
 .modal.active{
-  visibility:visible;
-  opacity:1;
+  display:flex;
 }
 
 .modal-box{
@@ -757,6 +754,202 @@ background-color: #010e3a;
   }
 }
 
+
+/* ================= MODAL STYLES ================= */
+.btn-get-started {
+  background: rgb(44, 214, 44);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-get-started:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(129, 133, 130, 0.4);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #000;
+}
+.btn-get-started {
+  background: rgb(44, 214, 44);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-get-started:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(129, 133, 130, 0.4);
+}
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active .modal-content {
+  margin: 0;
+}
+
+/* Modal Content */
+.modal-content {
+  background: rgb(254, 252, 252);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  color: var(--text-primary);
+  animation: fadeIn 0.5s ease;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: #ffffff;   /* clean white for input box */
+  color: #000000;        /* black text inside */
+  font-size: 1rem;
+  border: 1px solid black;
+}
+/* Success Message */
+.success-message {
+  background: #e6ffe6;
+  color: #0f5132;
+  border: 1px solid #b2f5b2;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Dropdown Options */
+.modal-content select option {
+  background: #ffffff;   /* white background */
+  color: #000000;        /* black text */
+  padding: 10px;
+}
+
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background:rgb(8, 131, 8);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 237, 51, 0.3);
+}
+
+/* Close Button */
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(184, 5, 5);
+}
+
+.close:hover {
+  color: red;
+}
+#getStartedForm label{
+  color: black;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 </style>
 </head>
 
@@ -790,8 +983,10 @@ background-color: #010e3a;
         <li><a href="../contact/">Contact Us</a></li>
         <li><a href="../refer.html">Refer & Earn</a></li>
         <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
-        <li class="nav-login">
-          <a href="javascript:void(0)" class="btn-login">Login</a>
+        <li class="nav-get-started">
+              <button class="btn-get-started" onclick="openGetStartedModal()">
+  Get Started
+</button>
         </li>
       </ul>
     </div>
@@ -889,7 +1084,72 @@ background-color: #010e3a;
   <div class="copyright">© <span class="year">2025</span> NXTSYNC. All rights reserved.</div>
   <div class="tagline">Building Tomorrow's Leaders Today</div>
 </div>
+   <!-- Get Started Modal -->
+<div id="getStartedModal" class="modal" onclick="closeGetStartedModal()">
+  <div class="modal-content" onclick="event.stopPropagation()" >
+    <span class="close" onclick="closeGetStartedModal()">&times;</span>
+    <h2 style="color: black;">Get Started</h2>
+    <p style="color: black;">Fill out the form below to get started with your course selection.</p>
+    <form id="getStartedForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="course">Course</label>
+      <select id="course" name="course" required>
+        <option value="">Select a course</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="AutoCAD">AutoCAD</option>
+        <option value="Biomedical Technology">Biomedical Technology</option>
+        <option value="Business Analytics">Business Analytics</option>
+        <option value="C Programming">C Programming</option>
+        <option value="CATIA">CATIA</option>
+        <option value="ChatGPT Prompt Engineering">ChatGPT Prompt Engineering</option>
+        <option value="Construction Planning Management">Construction Planning Management</option>
+        <option value="Cyber Security">Cyber Security</option>
+        <option value="Data Analytics">Data Analytics</option>
+        <option value="Data Science">Data Science</option>
+        <option value="DevOps">DevOps</option>
+        <option value="Digital Marketing">Digital Marketing</option>
+        <option value="Embedded Systems">Embedded Systems</option>
+        <option value="Finance">Finance</option>
+        <option value="Full Stack Web Development">Full Stack Web Development</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="IoT Robotics">IoT Robotics</option>
+        <option value="Java Full Stack">Java Full Stack</option>
+        <option value="Java Programming">Java Programming</option>
+        <option value="Linux">Linux</option>
+        <option value="Machine Learning">Machine Learning</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Power BI">Power BI</option>
+        <option value="Python Programming">Python Programming</option>
+        <option value="Revit">Revit</option>
+        <option value="SAP">SAP</option>
+        <option value="SolidWorks">SolidWorks</option>
+        <option value="SQL">SQL</option>
+        <option value="Stock Market">Stock Market</option>
+        <option value="UI/UX Design">UI/UX Design</option>
+        <option value="Video Editing">Video Editing</option>
+        <option value="VLSI Design">VLSI Design</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 <script>
+        function openGetStartedModal() {
+  document.getElementById("getStartedModal").classList.add("active");
+}
+
+function closeGetStartedModal() {
+  document.getElementById("getStartedModal").classList.remove("active");
+}
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');

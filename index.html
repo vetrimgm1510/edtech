@@ -584,17 +584,176 @@
   cursor: pointer;
 }
 
+form#getStartedForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form#getStartedForm label {
+  font-weight: 600;
+  color: #000;
+}
+
+form#getStartedForm input, form#getStartedForm select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  color: #0f0f0f;
+}
+
+form#getStartedForm button {
+  padding: 0.5rem;
+  background: orange;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}/* SECTION */
+.internship-timeline {
+  padding: 90px 20px;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+}
+.internship-timeline h3{
+  color: orange;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 80px;
+  color:orange;
+}
+
+/* Vertical glowing line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  bottom: 40px;
+  width: 3px;
+  background: linear-gradient(180deg, #a5f16300, #d7f75500);
+  transform: translateX(-50%);
+  opacity: 0.6;
+}
+
+/* Item */
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+/* Alternating */
+.timeline-item.left {
+  flex-direction: row;
+}
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+/* Image block */
+.media {
+  width: 280px;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  flex-shrink: 0;
+}
+
+.timeline-item.right .media {
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.6s ease;
+}
+
+.timeline-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Content panel */
+.content {
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  transition: 0.4s ease;
+}
+
+.timeline-item:hover .content {
+  transform: translateY(-6px);
+}
+
+.content h3 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.content p {
+  color: #d1d1d1;
+  line-height: 1.6;
+}
+
+/* Tag */
+.pill {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  background: linear-gradient(135deg, #6366f1, #9333ea);
+  color: white;
+}
+
+/* Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Mobile */
-@media (max-width: 600px) {
-  .slider-title {
-    font-size: 2rem;
+@media (max-width: 900px) {
+  .timeline::before {
+    display: none;
   }
 
-  .tab {
-    padding: 10px 18px;
-    font-size: 14px;
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .media {
+    width: 100%;
+    height: 220px;
+    clip-path: none;
   }
 }
+
 
 </style>
 
@@ -637,6 +796,40 @@
           callback: handleCredentialResponse
         });
       }
+    });
+
+    // Get Started Modal functions
+    function openGetStartedModal() {
+      document.getElementById('getStartedModal').style.display = 'block';
+    }
+
+    function closeGetStartedModal() {
+      document.getElementById('getStartedModal').style.display = 'none';
+    }
+
+    // Form submission
+    document.getElementById('getStartedForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const course = document.getElementById('course').value;
+
+      fetch('YOUR_APPS_SCRIPT_URL', {
+        method: 'POST',
+        body: JSON.stringify({name: name, email: email, phone: phone, course: course}),
+        headers: {'Content-Type': 'application/json'}
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Form submitted successfully!');
+        document.getElementById('getStartedForm').reset();
+        closeGetStartedModal();
+      })
+      .catch(error => {
+        alert('Error submitting form. Please try again.');
+        console.error('Error:', error);
+      });
     });
   </script>
 </head>
@@ -691,10 +884,67 @@
   </div>
 </div>
 
+  <!-- Get Started Modal -->
+<div id="getStartedModal" class="modal" onclick="closeGetStartedModal()">
+  <div class="modal-content" onclick="event.stopPropagation()" >
+    <span class="close" onclick="closeGetStartedModal()">&times;</span>
+    <h2>Get Started</h2>
+    <p>Fill out the form below to get started with your course selection.</p>
+    <form id="getStartedForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
 
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="course">Course</label>
+      <select id="course" name="course" required>
+        <option value="">Select a course</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="AutoCAD">AutoCAD</option>
+        <option value="Biomedical Technology">Biomedical Technology</option>
+        <option value="Business Analytics">Business Analytics</option>
+        <option value="C Programming">C Programming</option>
+        <option value="CATIA">CATIA</option>
+        <option value="ChatGPT Prompt Engineering">ChatGPT Prompt Engineering</option>
+        <option value="Construction Planning Management">Construction Planning Management</option>
+        <option value="Cyber Security">Cyber Security</option>
+        <option value="Data Analytics">Data Analytics</option>
+        <option value="Data Science">Data Science</option>
+        <option value="DevOps">DevOps</option>
+        <option value="Digital Marketing">Digital Marketing</option>
+        <option value="Embedded Systems">Embedded Systems</option>
+        <option value="Finance">Finance</option>
+        <option value="Full Stack Web Development">Full Stack Web Development</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="IoT Robotics">IoT Robotics</option>
+        <option value="Java Full Stack">Java Full Stack</option>
+        <option value="Java Programming">Java Programming</option>
+        <option value="Linux">Linux</option>
+        <option value="Machine Learning">Machine Learning</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Power BI">Power BI</option>
+        <option value="Python Programming">Python Programming</option>
+        <option value="Revit">Revit</option>
+        <option value="SAP">SAP</option>
+        <option value="SolidWorks">SolidWorks</option>
+        <option value="SQL">SQL</option>
+        <option value="Stock Market">Stock Market</option>
+        <option value="UI/UX Design">UI/UX Design</option>
+        <option value="Video Editing">Video Editing</option>
+        <option value="VLSI Design">VLSI Design</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 
   <!-- Navigation -->
-  <nav>
+  <nav id="nav">
     <div class="nav-container">
       <div class="logo">
   <a href="index.html">
@@ -730,8 +980,8 @@
      <li><a href="https://lms.nxtsync.in/"><span class="nav-icon">👥</span>LMS</a></li>
     
      
-<li class="nav-login" >
-      <a href="javascript:void(0)" class="btn-login">Login</a>
+<li class="nav-get-started" >
+      <a href="javascript:void(0)" class="btn-get-started" onclick="openGetStartedModal()">Get Started</a>
     </li>
 
 
@@ -918,38 +1168,56 @@
   </div>
 </section>
 
-
-<!-- Internships Section -->
-<section class="section fade-in" id="internships">
+<section class="internship-timeline" id="internships">
   <h2 class="section-title">Exclusive Internships</h2>
-  <div class="internship-grid">
-    
-    <div class="internship-card">
-      <div class="internship-image">
-        <img src="techstartups.jpeg" alt="Tech Startups">
+
+  <div class="timeline">
+
+    <div class="timeline-item left reveal">
+      <div class="media">
+        <img src="techstartups.png" alt="Tech Startups">
       </div>
-      <h3>Tech Startups</h3>
-      <p>Work with innovative startups and gain hands-on experience in cutting-edge technologies. Fast-paced learning environment.</p>
+      <div class="content">
+        <h3>Tech Startups</h3>
+        <p>
+          Work in fast-paced startup environments where innovation,
+          ownership, and rapid growth define your learning journey.
+        </p>
+        <span class="pill">Startup Culture</span>
+      </div>
     </div>
 
-    <div class="internship-card">
-      <div class="internship-image">
-        <img src="mnc.jpeg" alt="Fortune 500 Companies">
+    <div class="timeline-item right reveal">
+      <div class="media">
+        <img src="mnc.png" alt="Fortune 500">
       </div>
-      <h3>Fortune 500 Companies</h3>
-      <p>Internship opportunities with top-tier companies. Build your network and gain industry insights from the best.</p>
+      <div class="content">
+        <h3>Fortune 500 Companies</h3>
+        <p>
+          Experience structured workflows, enterprise tools, and global
+          exposure with industry-leading organizations.
+        </p>
+        <span class="pill">Enterprise Level</span>
+      </div>
     </div>
 
-    <div class="internship-card">
-      <div class="internship-image">
-        <img src="remote.jpeg" alt="Remote Opportunities">
+    <div class="timeline-item left reveal">
+      <div class="media">
+        <img src="remote.jpeg" alt="Remote Work">
       </div>
-      <h3>Remote Opportunities</h3>
-      <p>Work remotely with global companies and develop cross-cultural collaboration skills in a digital-first world.</p>
+      <div class="content">
+        <h3>Remote Opportunities</h3>
+        <p>
+          Collaborate with international teams remotely and master modern
+          digital communication workflows.
+        </p>
+        <span class="pill">Remote First</span>
+      </div>
     </div>
 
   </div>
 </section>
+
 
 
 
@@ -1643,9 +1911,21 @@ tabs.forEach(tab => {
 </script>
 
 
-
-
   <script src="script.js"></script>
+  <script>
+const revealItems = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+revealItems.forEach(el => observer.observe(el));
+</script>
+
 
   <!-- AI Network Canvas Animation -->
   <script>
