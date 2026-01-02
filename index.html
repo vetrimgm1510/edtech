@@ -753,6 +753,92 @@ form#getStartedForm button {
     clip-path: none;
   }
 }
+.stats-neo {
+  padding: 90px 20px;
+  background: radial-gradient(circle at top, #111827, #05070f);
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.stats-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg,#7c9cff,#00ffe1);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.stats-orbit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 50px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.stat-orb {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: auto;
+  border-radius: 50%;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 40px rgba(0,255,255,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.stat-orb:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 0 80px rgba(0,255,255,0.35);
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+circle.bg {
+  stroke: rgba(255,255,255,0.12);
+}
+
+circle.progress {
+  stroke: url(#grad);
+  stroke-dasharray: 327;
+  stroke-dashoffset: 327;
+  transition: stroke-dashoffset 1.5s ease;
+}
+
+.stat-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-center .number {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #00ffe1;
+}
+
+.stat-center small {
+  opacity: 0.85;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
 
 
 </style>
@@ -960,15 +1046,7 @@ form#getStartedForm button {
 <li class="dropdown">
   <div class="dropdown-header">
     <a href="courses/index.html">Programs</a>
-    <span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span>
-  </div>
-  <ul class="dropdown-menu">
-    <li><a href="courses/more/webdev.html">Web Development</a></li>
-    <li><a href="courses/more/AI.html">AI & ML</a></li>
-    <li><a href="courses/more/cc.html">Cloud Computing</a></li>
-    <li><a href="courses/more/uiux.html">UI/UX Design</a></li>
-    <li><a href="courses/">View More</a></li>
-  </ul>
+  
 </li>
 
 
@@ -1117,26 +1195,58 @@ form#getStartedForm button {
 </section> -->
 
   <!-- Stats Section -->
-<section class="section stats-section">
-  <div class="stats">
-    <div class="stat-item">
-      <div class="stat-number">10k+</div>
-      <div class="stat-label">Students Enrolled</div>
+<section class="stats-neo">
+  <h2 class="stats-title">Our Impact in Numbers</h2>
+
+  <div class="stats-orbit">
+
+    <div class="stat-orb" data-value="10000" data-label="Students Enrolled" data-suffix="+">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"></circle>
+        <circle class="progress" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="stat-center">
+        <span class="number">0</span>
+        <small>Students</small>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">99+</div>
-      <div class="stat-label">Premium Courses</div>
+
+    <div class="stat-orb" data-value="35" data-label="Premium Courses" data-suffix="+">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"></circle>
+        <circle class="progress" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="stat-center">
+        <span class="number">0</span>
+        <small>Courses</small>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">98%</div>
-      <div class="stat-label">Success Rate</div>
+
+    <div class="stat-orb" data-value="98" data-label="Success Rate" data-suffix="%">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"></circle>
+        <circle class="progress" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="stat-center">
+        <span class="number">0</span>
+        <small>Success</small>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">100+</div>
-      <div class="stat-label">Internship Placements</div>
+
+    <div class="stat-orb" data-value="100" data-label="Internships" data-suffix="+">
+      <svg viewBox="0 0 120 120">
+        <circle class="bg" cx="60" cy="60" r="52"></circle>
+        <circle class="progress" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="stat-center">
+        <span class="number">0</span>
+        <small>Placements</small>
+      </div>
     </div>
+
   </div>
 </section>
+
   <!-- Advertisement Scrolling Bar -->
 <section  class="section fade-in" id="ads">
   <h2 class="section-title">Our Partners</h2>
@@ -1816,7 +1926,7 @@ form#getStartedForm button {
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
-          <div class="footer-links"><a href="/home/">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
+          <div class="footer-links"><a href="index.html">Home</a><a href="/courses/">Courses</a><a href="/about/">About Us</a><a href="/contact/">Contact Us</a></div>
         </div>
         <div class="footer-section">
           <h3>Contact</h3>
@@ -1926,6 +2036,52 @@ const observer = new IntersectionObserver(entries => {
 revealItems.forEach(el => observer.observe(el));
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const statItems = document.querySelectorAll(".stat-orb");
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const value = parseInt(el.dataset.value);
+      const suffix = el.dataset.suffix || "";
+      const number = el.querySelector(".number");
+      const circle = el.querySelector(".progress");
+
+      const radius = 52;
+      const circumference = 2 * Math.PI * radius;
+
+      circle.style.strokeDasharray = circumference;
+      circle.style.strokeDashoffset = circumference;
+
+      const percent = Math.min(value, 100);
+      const targetOffset = circumference - (percent / 100) * circumference;
+
+      let count = 0;
+      const step = Math.max(1, Math.floor(value / 60));
+
+      const counter = setInterval(() => {
+        count += step;
+        if (count >= value) {
+          count = value;
+          clearInterval(counter);
+        }
+        number.textContent = count + suffix;
+      }, 20);
+
+      setTimeout(() => {
+        circle.style.strokeDashoffset = targetOffset;
+      }, 50);
+
+      statsObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+
+  statItems.forEach(item => statsObserver.observe(item));
+});
+</script>
 
   <!-- AI Network Canvas Animation -->
   <script>
@@ -1981,7 +2137,11 @@ revealItems.forEach(el => observer.observe(el));
       requestAnimationFrame(animate);
     }
     animate();
+
+    
   </script>
 
 </body>
 </html>
+
+
